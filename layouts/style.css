@@ -52,6 +52,10 @@ aside img.profile-pic {
     margin: 0 auto;
 }
 
+main section {
+    padding-left: 1em; /* これは約4つの半角スペースに相当します */
+}
+
 main {
     flex: 3;
     margin-left: 20%; /* Same as aside width */
@@ -60,6 +64,10 @@ main {
 
 main h1 {
     font-size: 42px; /* h1タグのフォントサイズを大きく設定 */
+}
+
+main p {
+    font-size: 21px; /* 文字サイズを24pxに設定 */
 }
 
 main h2 {
