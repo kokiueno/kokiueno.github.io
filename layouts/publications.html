@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Koki Ueno's Portfolio</title>
+    <title>Publications - Koki Ueno's Publications</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
         <ul>
+            <li><a href="index.html">Home</a></li> <!-- Home ページへのリンクを追加 -->
             <li><a href="about-me.html">About Me</a></li>
-            <li><a href="portfolio.html">Port Folio</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="publications.html">Publications</a></li>
         </ul>
-    </nav>
+    </nav>    
     <div class="container">
         <aside>
             <img src="koki.JPG" alt="profile-pic" class="profile-pic">
@@ -21,61 +22,44 @@
             <p class="introduction">Data Science & Computer Science</p>
         </aside>
         <main>
-            <section id="about-me">
-                <h1>About Me</h1>
-                
-                <h2>1. Education</h2>
-                <ul>
-                    <li>
-                        <strong>2020 - 2025</strong>
-                        <span class="degree-detail">Bachelor of Engineering in Computer Science from Computational Intelligence Laboratory, TTI; Toyota Technological Institute, Japan</span>
-                        <span class="degree-detail">Engineering, Advanced Science and Technology, Electrics & Informatics Science and Engineering</span>
-                    </li>                    
-                    <li>
-                        <strong>August 2022 - September 2022</strong>
-                        <span class="degree-detail">Summer program studied Entrepreneurship, Business, and Science at the University of California, Davis</span>
-                    </li>
-                </ul>
+            <section id="publications">
+                <h1>Publications</h1>
+            </section>
 
-                <h2>2. Work Experience</h2>
+            <!-- 目次の追加 -->
+            <section id="table-of-contents">
+                <h2>Table of Contents</h2>
                 <ul>
-                    <li>
-                        <strong>2023 – 2024, Trainee as a Data Scientist and R&D Engineer; Focused on Virtual Simulation using a Data-Driven Approach, Full-time</strong>
-                        <span class="degree-detail">AT&S Austria Technologie & Systemtechnik Aktiengesellschaft, Leoben, Austria</span>
-                    </li>                    
-                    <li>
-                        <strong>2020 -, Data Scientist; Freelance</strong>
-                        <span class="degree-detail">AVILEN, Japan</span>
-                    </li>
-                    <li>
-                        <strong>2015 - 2020, Data Analyst; Full-time</strong>
-                        <span class="degree-detail">Toyota Motor Company, Japan</span>
-                    </li>
+                    <li><a href="#section1" style="font-size: 14px;">1. Section Title 1</a></li>
+                    <!----
+                    <li><a href="#section2">2. Section Title 2</a></li>
+                    -->
                 </ul>
-                
-                <h2>3. Skills</h2>
-                <ul>
-                    <li>
-                        <strong>Languages</strong>
-                        <span class="degree-detail">Japanese (Native), English (TOEIC 870), German (A2)</span>
-                    </li>
-                    <li>
-                        <strong>Software Skills</strong>
-                        <span class="degree-detail">Python (numpy, scipy, pandas, sklearn, VAE), SQL, R, LaTeX, C, HTML, CSS, MATLAB, VBA, C#, C++, Stan, Simulink, Microsoft Office, SolidWorks</span>
-                    </li>                  
-                    <li>
-                        <strong>Time-Series Analysis</strong>
-                        <span class="degree-detail">Change Point Detection with Probabilistic Methods; HMM, SSM</span>
-                    </li>            
-                </ul>
-                        
-                <h2>4. -</h2>
-                <ul>
-                    <li>
-                        <strong>(to be described later)</strong>
-                        <span class="degree-detail">(to be described later)</span>
-                    </li>
-                </ul>                
+            </section>
+            
+            <!-- 各セクション -->
+            <section id="section1">
+                <h2>Section Title 1</h2>
+                <p>Comming soon...</p>
+            </section>
+            
+            <!--
+            <section id="section2">
+                <h1>Section Title 2</h1>
+                <p>Comming soon...</p>
+            </section>
+            -->
+
+            <section id="links">
+                <div class="last-modified" style="text-align: right;">
+                    <img src="image.png" alt="Modified Icon" style="width:24px;height:24px;">
+                    <span>Last Modified: March 16, 2024</span>
+                </div>                  
+            </section>
+
+            <!-- セクションの終わりに戻るリンクを追加 -->
+            <section>
+                <a href="index.html">Back to Home</a>
             </section>
         </main>               
     </div>
