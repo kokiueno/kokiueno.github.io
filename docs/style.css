@@ -108,7 +108,7 @@ main li {
 }
 
 main li strong {
-    font-size: 18px; /* 日付のフォントサイズを設定 */
+    font-size: 28px; /* 言語名・日付のフォントサイズを設定 */
     display: block; /* ブロック要素として表示し、自動的に新しい行を開始 */
     margin-bottom: 5px; /* 下のマージンを小さくして、次の要素との間隔を狭める */
 }
