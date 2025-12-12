@@ -160,3 +160,30 @@ main li .degree-detail {
     color: #0066cc;
     text-decoration: underline;
 }
+
+/* Education section styles */
+.education-item {
+    margin-bottom: 30px;
+}
+
+.edu-header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.edu-institution {
+    font-weight: bold;
+}
+
+.edu-period {
+    font-weight: normal;
+}
+
+.edu-degree,
+.edu-course,
+.edu-detail {
+    font-size: 18px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
