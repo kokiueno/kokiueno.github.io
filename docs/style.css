@@ -92,6 +92,10 @@ main h2 {
     /* 他のスタイル設定があればここに追加 */
 }
 
+main h3 {
+    font-size: 28px; /* 会社名・スキルカテゴリーのフォントサイズ */
+}
+
 main ul {
     list-style-type: disc; /* バレットポイントを表示 */
     padding-left: 40px; /* リストアイテムのインデント（左パディング）を設定 */
