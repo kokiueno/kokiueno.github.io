@@ -9,10 +9,11 @@
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li> <!-- Home ページへのリンクを追加 -->
-            <li><a href="about-me.html">About Me</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="publications.html">Publications</a></li>
+            <li><a href="index.html" data-en="Home" data-ja="ホーム">Home</a></li>
+            <li><a href="about-me.html" data-en="About Me" data-ja="私について">About Me</a></li>
+            <li><a href="portfolio.html" data-en="Portfolio" data-ja="ポートフォリオ">Portfolio</a></li>
+            <li><a href="publications.html" data-en="Publications" data-ja="出版物">Publications</a></li>
+            <li><button id="language-toggle" onclick="toggleLanguage()">日本語</button></li>
         </ul>
     </nav>    
     <div class="container">
@@ -23,30 +24,30 @@
         </aside>
         <main>
             <section id="publications">
-                <h1>Publications</h1>
+                <h1 data-en="Publications" data-ja="出版物">Publications</h1>
             </section>
 
             <!-- 目次の追加 -->
             <section id="table-of-contents">
-                <h2>Table of Contents</h2>
+                <h2 data-en="Table of Contents" data-ja="目次">Table of Contents</h2>
                 <ul>
-                    <li><a href="#section1" style="font-size: 14px;">1. Section Title 1</a></li>
+                    <li><a href="#section1" style="font-size: 14px;" data-en="1. Section Title 1" data-ja="1. セクション 1">1. Section Title 1</a></li>
                     <!----
                     <li><a href="#section2">2. Section Title 2</a></li>
                     -->
                 </ul>
             </section>
-            
+
             <!-- 各セクション -->
             <section id="section1">
-                <h2>Section Title 1</h2>
-                <p>Comming soon...</p>
+                <h2 data-en="Section Title 1" data-ja="セクション 1">Section Title 1</h2>
+                <p data-en="Coming soon..." data-ja="近日公開...">Coming soon...</p>
             </section>
-            
+
             <!--
             <section id="section2">
                 <h1>Section Title 2</h1>
-                <p>Comming soon...</p>
+                <p>Coming soon...</p>
             </section>
             -->
 
@@ -54,14 +55,15 @@
                 <div class="last-modified" style="text-align: right;">
                     <img src="image.png" alt="Modified Icon" style="width:24px;height:24px;">
                     <span>Last Modified: March 16, 2024</span>
-                </div>                  
+                </div>
             </section>
 
             <!-- セクションの終わりに戻るリンクを追加 -->
             <section>
-                <a href="index.html">Back to Home</a>
+                <a href="index.html" data-en="Back to Home" data-ja="ホームに戻る">Back to Home</a>
             </section>
-        </main>               
+        </main>
     </div>
+    <script src="language-switcher.js"></script>
 </body>
 </html>
