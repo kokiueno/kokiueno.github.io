@@ -709,6 +709,20 @@ a:hover {
     .hero {
         grid-template-columns: auto minmax(0, 1fr);
     }
+}
+
+/* On wide screens the centred column leaves a large left margin, which makes
+   the portrait read as centred. Nudge it out toward that margin — proportional
+   to how much room there is, capped so it never crowds the viewport edge.
+   translate, not a negative margin: a negative margin shrinks the grid track
+   and `img{max-width:100%}` would then squash the portrait into an ellipse. */
+@media (min-width: 1200px) {
+    .hero-avatar {
+        transform: translateX(max(-90px, calc((var(--maxw) - 100vw) / 4)));
+    }
+}
+
+@media (min-width: 720px) {
 
     .card-grid.cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
