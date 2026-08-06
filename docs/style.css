@@ -1,21 +1,54 @@
 /* ===========================================================
-   Koki Ueno — portfolio site
-   Mobile-first, fluid typography, no fixed pixel layouts.
+   Koki Ueno — portfolio
+   Dark-first "tech" theme. Fluid type, no fixed widths.
    =========================================================== */
 
 :root {
-    --ink: #1a1a1a;
-    --muted: #5b5b5b;
-    --accent: #1f4e79;
-    --accent-soft: #eaf1f8;
-    --bg: #ffffff;
-    --panel: #f5f4f1;
-    --line: #e3e1dc;
-    --nav-bg: #23262b;
+    color-scheme: dark;
 
-    --maxw: 1180px;
-    --pad: clamp(16px, 4vw, 40px);
-    --radius: 10px;
+    --bg: #0a0c10;
+    --bg-elev: #10141a;
+    --bg-elev-2: #161b23;
+    --line: #212733;
+    --line-strong: #303948;
+
+    --text: #e9edf3;
+    --text-dim: #98a2b3;
+    --text-faint: #6a7383;
+
+    --accent: #5ee0ff;
+    --accent-2: #a78bfa;
+    --accent-ink: #06080b;
+    --accent-tint: rgba(94, 224, 255, .10);
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+    --maxw: 1080px;
+    --pad: clamp(18px, 5vw, 48px);
+    --r: 14px;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color-scheme: light;
+
+        --bg: #fbfbfd;
+        --bg-elev: #ffffff;
+        --bg-elev-2: #f4f5f8;
+        --line: #e3e6ec;
+        --line-strong: #cdd3dd;
+
+        --text: #10141a;
+        --text-dim: #545d6c;
+        --text-faint: #79828f;
+
+        --accent: #0b7fa5;
+        --accent-2: #6d4ddb;
+        --accent-ink: #ffffff;
+        --accent-tint: rgba(11, 127, 165, .08);
+    }
 }
 
 * {
@@ -30,13 +63,34 @@ html {
 body {
     margin: 0;
     background: var(--bg);
-    color: var(--ink);
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-        "Yu Gothic", "Noto Sans JP", sans-serif;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.5vw, 16.5px);
     line-height: 1.7;
-    font-size: clamp(15px, 1.6vw, 17px);
+    letter-spacing: .01em;
     overflow-wrap: anywhere;
-    word-break: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ambient glow behind the hero */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30vh 0 auto 0;
+    height: 70vh;
+    background:
+        radial-gradient(60vw 40vh at 20% 40%, rgba(94, 224, 255, .12), transparent 70%),
+        radial-gradient(50vw 36vh at 80% 20%, rgba(167, 139, 250, .10), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@media (prefers-color-scheme: light) {
+    body::before {
+        background:
+            radial-gradient(60vw 40vh at 20% 40%, rgba(11, 127, 165, .07), transparent 70%),
+            radial-gradient(50vw 36vh at 80% 20%, rgba(109, 77, 219, .06), transparent 70%);
+    }
 }
 
 img {
@@ -46,227 +100,458 @@ img {
 
 a {
     color: var(--accent);
-}
-
-/* ---------- Navigation ---------- */
-
-nav {
-    background: var(--nav-bg);
-    position: sticky;
-    top: 0;
-    z-index: 20;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0 var(--pad);
-    max-width: var(--maxw);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(4px, 2vw, 28px);
-}
-
-nav ul li {
-    display: block;
-}
-
-nav ul li a {
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    padding: clamp(12px, 2vw, 18px) clamp(8px, 1.6vw, 16px);
-    font-size: clamp(14px, 1.7vw, 18px);
-    letter-spacing: .02em;
-    border-bottom: 2px solid transparent;
-}
-
-nav ul li a:hover,
-nav ul li a:focus-visible {
-    border-bottom-color: #fff;
-}
-
-#language-toggle {
-    background: #3a3f46;
-    color: #fff;
-    border: none;
-    border-radius: 999px;
-    padding: 8px 18px;
-    margin-left: clamp(0px, 1vw, 12px);
-    font: inherit;
-    font-size: clamp(13px, 1.5vw, 15px);
-    cursor: pointer;
-    transition: background-color .2s ease;
-}
-
-#language-toggle:hover {
-    background: #555c66;
-}
-
-/* ---------- Layout ---------- */
-
-.container {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 var(--pad);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(20px, 3vw, 40px);
-}
-
-aside {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: clamp(18px, 3vw, 24px);
-    margin-top: clamp(20px, 3vw, 32px);
-    text-align: center;
-}
-
-aside img.profile-pic {
-    width: clamp(120px, 34vw, 190px);
-    height: clamp(120px, 34vw, 190px);
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 14px;
-}
-
-aside h3.center-text {
-    font-size: clamp(18px, 2.4vw, 22px);
-    margin: 0 0 4px;
-}
-
-.introduction {
-    margin: 0;
-    color: var(--muted);
-    font-size: clamp(13px, 1.6vw, 15px);
-}
-
-.sidebar-content {
-    margin-top: 18px;
-    padding: 0;
-}
-
-.sidebar-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 14px;
-}
-
-.sidebar-links li {
-    margin: 0;
-    font-size: clamp(13px, 1.6vw, 15px);
-}
-
-.sidebar-links li a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-}
-
-.sidebar-links li a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
-
-.contact-list {
-    list-style: none;
-    padding: 0;
-    margin: 18px 0 0;
-    font-size: clamp(12.5px, 1.5vw, 14px);
-    line-height: 1.9;
-    color: var(--muted);
-}
-
-.contact-list li {
-    margin: 0;
-}
-
-.contact-list a {
     text-decoration: none;
 }
 
-.contact-list a:hover {
+a:hover {
     text-decoration: underline;
 }
 
-main {
-    min-width: 0;
-    padding: clamp(8px, 2vw, 20px) 0 clamp(40px, 6vw, 72px);
+.wrap {
+    position: relative;
+    z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--pad);
 }
 
-main section {
+/* ---------- Nav ---------- */
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 10px var(--pad);
+    display: flex;
+    align-items: center;
+    gap: 10px 18px;
+    flex-wrap: wrap;
+}
+
+.nav-brand {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-right: auto;
+    white-space: nowrap;
+}
+
+.nav-brand:hover {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    margin: 0;
     padding: 0;
 }
 
-/* ---------- Typography ---------- */
-
-main h1 {
-    font-size: clamp(28px, 5vw, 42px);
-    line-height: 1.25;
-    margin: clamp(12px, 2vw, 20px) 0 6px;
+.nav-links a {
+    display: inline-block;
+    color: var(--text-dim);
+    font-size: clamp(13px, 1.5vw, 14.5px);
+    padding: 6px 10px;
+    border-radius: 8px;
 }
 
-.page-lede {
-    color: var(--muted);
-    font-size: clamp(14px, 1.8vw, 17px);
-    margin: 0 0 8px;
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    color: var(--text);
+    background: var(--bg-elev-2);
+    text-decoration: none;
 }
 
-main h2 {
-    font-size: clamp(20px, 3vw, 27px);
-    line-height: 1.3;
-    margin: clamp(32px, 5vw, 52px) 0 14px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--ink);
+#language-toggle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .06em;
+    color: var(--text-dim);
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
 }
 
-main h3 {
-    font-size: clamp(17px, 2.3vw, 21px);
-    line-height: 1.4;
-    margin: 0 0 4px;
+#language-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
-main p {
-    font-size: clamp(14.5px, 1.7vw, 16.5px);
+/* ---------- Hero ---------- */
+
+.hero {
+    padding: clamp(44px, 9vw, 96px) 0 clamp(32px, 6vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 40px);
+    align-items: center;
 }
 
-main ul {
-    padding-left: 1.25em;
-    margin: 8px 0 0;
+.hero-avatar {
+    width: clamp(112px, 26vw, 168px);
+    height: clamp(112px, 26vw, 168px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 0 0 6px var(--accent-tint), 0 24px 60px rgba(0, 0, 0, .35);
 }
 
-main li {
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 7vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.hero-name-ja {
+    display: block;
+    font-size: clamp(16px, 2.2vw, 20px);
+    letter-spacing: .04em;
+    color: var(--text-dim);
+    font-weight: 500;
     margin-bottom: 8px;
-    font-size: clamp(14.5px, 1.7vw, 16.5px);
-    line-height: 1.65;
 }
 
-main li ul {
-    margin-top: 6px;
-    list-style-type: circle;
+.hero-role {
+    font-size: clamp(16px, 2.2vw, 21px);
+    color: var(--text);
+    font-weight: 600;
+    margin: 10px 0 0;
 }
 
-/* ---------- Entry cards (education / work / research) ---------- */
-
-.entry {
-    border-left: 3px solid var(--line);
-    padding: 2px 0 2px clamp(12px, 2vw, 20px);
-    margin-bottom: clamp(20px, 3vw, 30px);
+.hero-line {
+    font-size: clamp(14.5px, 1.8vw, 17px);
+    color: var(--text-dim);
+    margin: 12px 0 0;
+    max-width: 56ch;
 }
 
-.entry:hover {
-    border-left-color: var(--accent);
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
 }
 
-.entry-head {
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(13px, 1.5vw, 14.5px);
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    background: var(--bg-elev);
+    transition: border-color .2s, color .2s, transform .15s;
+}
+
+.btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: var(--accent);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    color: var(--accent-ink);
+    filter: brightness(1.08);
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+    padding: clamp(34px, 6vw, 64px) 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 clamp(18px, 3vw, 28px);
+}
+
+.section-label .num {
+    color: var(--accent);
+}
+
+.section-label .title {
+    color: var(--text);
+}
+
+/* ---------- Cards ---------- */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 2vw, 18px);
+}
+
+.card {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: clamp(18px, 3vw, 24px);
+    transition: border-color .2s, transform .2s, background .2s;
+}
+
+.card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+}
+
+/* org and year always stack, so cards line up regardless of name length */
+.card-org {
+    font-size: clamp(16px, 2vw, 19px);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 0;
+}
+
+.card-when {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    color: var(--text-faint);
+    letter-spacing: .04em;
+}
+
+.card-role {
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    color: var(--accent);
+    font-weight: 600;
+    margin: 6px 0 0;
+}
+
+.card-note {
+    font-size: clamp(14px, 1.6vw, 15.5px);
+    color: var(--text-dim);
+    margin: 10px 0 0;
+}
+
+/* focus tiles */
+.tile {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: clamp(18px, 3vw, 24px);
+    position: relative;
+    overflow: hidden;
+}
+
+.tile::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    opacity: .8;
+}
+
+.tile h3 {
+    font-size: clamp(15px, 1.9vw, 17.5px);
+    margin: 0 0 8px;
+    letter-spacing: -.01em;
+}
+
+.tile p {
+    margin: 0;
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    color: var(--text-dim);
+}
+
+/* ---------- Compact rows (past roles, education) ---------- */
+
+.rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+}
+
+.rows li {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px 20px;
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--line);
+}
+
+.rows .r-org {
+    font-weight: 600;
+    font-size: clamp(14.5px, 1.7vw, 16px);
+}
+
+.rows .r-role {
+    color: var(--text-dim);
+    font-size: clamp(13px, 1.5vw, 14.5px);
+}
+
+.rows .r-when {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    color: var(--text-faint);
+    letter-spacing: .04em;
+}
+
+/* ---------- Tags ---------- */
+
+.tag-group {
+    margin-bottom: clamp(16px, 2.6vw, 22px);
+}
+
+.tag-group h3 {
+    font-family: var(--font-mono);
+    font-size: clamp(10.5px, 1.2vw, 12px);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tags li {
+    font-size: clamp(12.5px, 1.4vw, 13.8px);
+    line-height: 1.4;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--bg-elev);
+    color: var(--text-dim);
+    white-space: nowrap;
+}
+
+.tags li.hot {
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    background: var(--accent-tint);
+    color: var(--accent);
+}
+
+/* ---------- Publication entries ---------- */
+
+.pub {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--accent);
+    border-radius: var(--r);
+    padding: clamp(18px, 3vw, 24px);
+    margin-bottom: clamp(12px, 2vw, 18px);
+}
+
+.pub h3 {
+    font-size: clamp(15.5px, 2vw, 18.5px);
+    line-height: 1.4;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+}
+
+.pub .venue {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .06em;
+    color: var(--accent);
+    margin: 0 0 10px;
+}
+
+.pub p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: clamp(14px, 1.6vw, 15.5px);
+}
+
+.lede {
+    color: var(--text-dim);
+    font-size: clamp(14.5px, 1.8vw, 17px);
+    max-width: 62ch;
+    margin: 0 0 clamp(20px, 3vw, 32px);
+}
+
+.page-title {
+    font-size: clamp(30px, 5.5vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin: clamp(36px, 6vw, 64px) 0 12px;
+}
+
+/* ---------- Résumé document ---------- */
+
+.doc {
+    max-width: 800px;
+}
+
+.doc h2 {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin: clamp(30px, 5vw, 46px) 0 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+}
+
+.doc .item {
+    padding: clamp(16px, 2.6vw, 22px) 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.doc .item:last-child {
+    border-bottom: 0;
+}
+
+.doc .item-head {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -274,155 +559,206 @@ main li ul {
     gap: 2px 16px;
 }
 
-.entry-org {
-    font-size: clamp(17px, 2.3vw, 21px);
+.doc .item-org {
+    font-size: clamp(15.5px, 1.9vw, 17.5px);
     font-weight: 700;
     margin: 0;
+    letter-spacing: -.01em;
 }
 
-.entry-meta {
-    font-size: clamp(12.5px, 1.5vw, 14px);
-    color: var(--muted);
-    font-style: italic;
-    white-space: nowrap;
+.doc .item-when {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    color: var(--text-faint);
+    letter-spacing: .04em;
+    text-align: right;
 }
 
-.entry-role {
+.doc .item-role {
     color: var(--accent);
     font-weight: 600;
-    font-size: clamp(14.5px, 1.8vw, 16.5px);
-    margin: 2px 0 0;
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    margin: 4px 0 0;
 }
 
-.entry-sub {
-    margin: 2px 0 0;
-    font-size: clamp(14px, 1.7vw, 16px);
-    color: var(--ink);
+.doc .item-sub {
+    color: var(--text-dim);
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    margin: 4px 0 0;
 }
 
-.entry-note {
-    margin: 8px 0 0;
-    font-size: clamp(13px, 1.6vw, 14.5px);
-    color: var(--muted);
+.doc ul {
+    margin: 10px 0 0;
+    padding-left: 1.1em;
 }
 
-.entry-note .note-label {
-    font-style: italic;
+.doc li {
+    font-size: clamp(13.8px, 1.6vw, 15.2px);
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    line-height: 1.6;
 }
 
-.award {
-    display: inline-block;
-    background: var(--accent-soft);
+.doc li::marker {
     color: var(--accent);
-    font-size: clamp(12px, 1.5vw, 13.5px);
-    font-weight: 700;
-    border-radius: 999px;
-    padding: 2px 12px;
-    margin-top: 6px;
 }
 
-/* ---------- Skills ---------- */
+.doc li ul {
+    margin-top: 6px;
+    list-style-type: circle;
+}
 
-.skills {
+.doc li strong {
+    color: var(--text);
+}
+
+.doc .item-note {
+    margin: 12px 0 0;
+    font-size: clamp(12.5px, 1.5vw, 14px);
+    color: var(--text-faint);
+}
+
+.doc dl.kv {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4px 20px;
-    margin: 10px 0 0;
+    gap: 2px 24px;
+    margin: 14px 0 0;
 }
 
-.skills dt {
-    font-weight: 700;
-    color: var(--accent);
-    font-size: clamp(13px, 1.6vw, 14.5px);
-    letter-spacing: .04em;
+.doc dl.kv dt {
+    font-family: var(--font-mono);
+    font-size: clamp(10.5px, 1.2vw, 12px);
+    letter-spacing: .14em;
     text-transform: uppercase;
-    margin-top: 12px;
+    color: var(--text-faint);
+    margin-top: 14px;
 }
 
-.skills dd {
+.doc dl.kv dd {
     margin: 0;
-    font-size: clamp(14px, 1.7vw, 16px);
+    font-size: clamp(13.8px, 1.6vw, 15.2px);
+    color: var(--text-dim);
 }
 
-/* ---------- Footer bits ---------- */
-
-.last-modified {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: clamp(32px, 5vw, 56px);
-    padding-top: 12px;
-    border-top: 1px solid var(--line);
-    font-size: clamp(12px, 1.5vw, 13.5px);
-    color: var(--muted);
-}
-
-.last-modified img {
-    width: 18px;
-    height: 18px;
-}
-
-.back-to-top {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: clamp(13px, 1.6vw, 15px);
-}
-
-/* ---------- Desktop: two-column ---------- */
-
-@media (min-width: 900px) {
-    .container {
-        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
-        align-items: start;
+@media (min-width: 720px) {
+    .doc dl.kv {
+        grid-template-columns: 168px minmax(0, 1fr);
     }
 
-    aside {
-        position: sticky;
-        top: calc(clamp(12px, 2vw, 18px) * 2 + 18px + 20px);
-    }
-
-    .sidebar-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    main {
-        padding-top: clamp(20px, 3vw, 32px);
-    }
-
-    .skills {
-        grid-template-columns: max-content minmax(0, 1fr);
-    }
-
-    .skills dt {
+    .doc dl.kv dt {
         margin-top: 0;
     }
 }
 
-/* ---------- Small phones: keep the meta from crowding ---------- */
+@media print {
+    .doc h2 {
+        color: #000;
+        border-bottom-color: #999;
+    }
+
+    .doc .item-role,
+    .doc li::marker {
+        color: #333;
+    }
+
+    .doc li,
+    .doc .item-sub,
+    .doc dl.kv dd {
+        color: #222;
+    }
+
+    .doc .item {
+        break-inside: avoid;
+    }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+    border-top: 1px solid var(--line);
+    padding: clamp(28px, 5vw, 44px) 0 clamp(40px, 6vw, 64px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: clamp(12px, 1.4vw, 13.5px);
+    color: var(--text-faint);
+}
+
+.footer a {
+    color: var(--text-dim);
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 720px) {
+    .hero {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .card-grid.cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-grid.cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .rows li {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+        align-items: baseline;
+    }
+}
 
 @media (max-width: 480px) {
-    .entry-meta {
+    .card-when,
+    .rows .r-when,
+    .tags li {
         white-space: normal;
     }
 }
 
-/* ---------- Print ---------- */
+/* ---------- Motion / print ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
 
 @media print {
-    nav,
-    aside,
-    .back-to-top {
+    .nav,
+    .hero-actions,
+    .footer,
+    body::before {
         display: none;
     }
 
-    .container {
-        display: block;
-        padding: 0;
+    body {
+        background: #fff;
+        color: #000;
+        font-size: 10.5pt;
     }
 
-    body {
-        font-size: 11pt;
+    .card,
+    .tile,
+    .pub {
+        border: 1px solid #ccc;
+        break-inside: avoid;
     }
 }

@@ -1,225 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Koki Ueno — ML R&D engineer working on robot foundation models, Vision-Language-Action models, and LLM agent systems.">
-    <title>About Me - Koki Ueno's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Koki Ueno — ML R&D engineer working on robot foundation models, Vision-Language-Action models, and LLM agent systems.">
+<title>Koki Ueno</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="about-me.html" data-en="About Me" data-ja="自己紹介">About Me</a></li>
-            <li><a href="portfolio.html" data-en="Portfolio" data-ja="ポートフォリオ">Portfolio</a></li>
-            <li><a href="publications.html" data-en="Publications" data-ja="研究業績">Publications</a></li>
-            <li><button id="language-toggle" onclick="toggleLanguage()">日本語</button></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <aside>
-            <img src="koki.JPG" alt="Koki Ueno" class="profile-pic">
-            <h3 class="center-text">上野航希 / Koki Ueno</h3>
-            <p class="introduction" data-en="Physical AI &amp; Machine Learning" data-ja="フィジカルAI / 機械学習">Physical AI &amp; Machine Learning</p>
 
-            <section class="sidebar-content">
-                <ul class="sidebar-links">
-                    <li><a href="about-me.html" data-en="About Me" data-ja="自己紹介">About Me</a></li>
-                    <li><a href="portfolio.html" data-en="Portfolio" data-ja="ポートフォリオ">Portfolio</a></li>
-                    <li><a href="publications.html" data-en="Publications" data-ja="研究業績">Publications</a></li>
-                </ul>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="about-me.html">Koki&nbsp;Ueno</a>
+    <ul class="nav-links">
+      <li><a href="about-me.html" aria-current="page" data-en="About" data-ja="紹介">About</a></li>
+      <li><a href="portfolio.html" data-en="Work" data-ja="仕事">Work</a></li>
+      <li><a href="publications.html" data-en="Research" data-ja="研究">Research</a></li>
+      <li><a href="resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+    </ul>
+    <button id="language-toggle" onclick="toggleLanguage()">日本語</button>
+  </div>
+</nav>
 
-                <ul class="contact-list">
-                    <li data-en="Nagoya, Aichi, Japan" data-ja="愛知県名古屋市">Nagoya, Aichi, Japan</li>
-                    <li><a href="mailto:uenokouki.soccer@gmail.com">uenokouki.soccer@gmail.com</a></li>
-                    <li><a href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a></li>
-                </ul>
-            </section>
-        </aside>
+<main class="wrap">
 
-        <main>
-            <section id="about-me">
-                <h1 data-en="About Me" data-ja="自己紹介">About Me</h1>
-                <p class="page-lede"
-                   data-en="ML R&amp;D engineer working on robot foundation models — Vision-Language-Action models, their safety and explainability — alongside LLM agent and RAG systems and the GPU infrastructure that trains them."
-                   data-ja="ロボット基盤モデル（Vision-Language-Actionモデルとその安全性・説明可能性）を軸に、LLMエージェント／RAGシステムの開発と、それらを支えるGPU学習基盤の構築に携わっています。">ML R&amp;D engineer working on robot foundation models — Vision-Language-Action models, their safety and explainability — alongside LLM agent and RAG systems and the GPU infrastructure that trains them.</p>
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <img class="hero-avatar" src="koki.JPG" alt="Koki Ueno">
+    <div>
+      <p class="eyebrow" data-en="Physical AI · Nagoya, Japan" data-ja="フィジカルAI · 名古屋">Physical AI · Nagoya, Japan</p>
+      <h1>
+        <span class="hero-name-ja">上野航希</span>
+        Koki Ueno
+      </h1>
+      <p class="hero-role" data-en="ML R&amp;D Engineer — Robot Foundation Models" data-ja="ML R&amp;Dエンジニア — ロボット基盤モデル">ML R&amp;D Engineer — Robot Foundation Models</p>
+      <p class="hero-line"
+         data-en="I build Vision-Language-Action models for real robots at Toyota, and the GPU platform that trains them. Executive Officer at AI Nest."
+         data-ja="トヨタで実機ロボット向けのVision-Language-Actionモデルと、その学習を支えるGPU基盤をつくっています。AI Nest 執行役員。">I build Vision-Language-Action models for real robots at Toyota, and the GPU platform that trains them. Executive Officer at AI Nest.</p>
 
-                <!-- ============ Education ============ -->
-                <h2 data-en="Education" data-ja="学歴">Education</h2>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="Toyota Technological Institute" data-ja="豊田工業大学">Toyota Technological Institute</p>
-                        <span class="entry-meta" data-en="Nagoya, Japan / Apr 2020 – Mar 2025" data-ja="名古屋 / 2020年4月 – 2025年3月">Nagoya, Japan / Apr 2020 – Mar 2025</span>
-                    </div>
-                    <p class="entry-sub" data-en="Engineer's degree, Electronic and Information Engineering" data-ja="学士（工学） 電子情報工学">Engineer's degree, Electronic and Information Engineering</p>
-                    <p class="entry-note" data-en="Computational Intelligence Laboratory" data-ja="計算知能研究室">Computational Intelligence Laboratory</p>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="The University of Tokyo" data-ja="東京大学">The University of Tokyo</p>
-                        <span class="entry-meta" data-en="Tokyo, Japan / Sep 2023 – Mar 2024" data-ja="東京 / 2023年9月 – 2024年3月">Tokyo, Japan / Sep 2023 – Mar 2024</span>
-                    </div>
-                    <p class="entry-sub" data-en="Global Consumer Intelligence (GCI 2023 Winter), Matsuo Lab" data-ja="グローバル消費インテリジェンス寄付講座（GCI 2023 Winter）／松尾研究室">Global Consumer Intelligence (GCI 2023 Winter), Matsuo Lab</p>
-                    <p class="entry-note" data-en="AI / Machine Learning / Data Science" data-ja="AI / 機械学習 / データサイエンス">AI / Machine Learning / Data Science</p>
-                    <span class="award" data-en="Excellent Award — distinguished graduate of the course" data-ja="優秀賞 — 修了生の中から選出">Excellent Award — distinguished graduate of the course</span>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="University of California, Davis" data-ja="カリフォルニア大学デービス校">University of California, Davis</p>
-                        <span class="entry-meta" data-en="Davis, CA, USA / Aug – Sep 2022" data-ja="米国カリフォルニア州 / 2022年8月 – 9月">Davis, CA, USA / Aug – Sep 2022</span>
-                    </div>
-                    <p class="entry-sub" data-en="Summer Program — Entrepreneurship / Critical Thinking" data-ja="サマープログラム — 起業家精神 / クリティカルシンキング">Summer Program — Entrepreneurship / Critical Thinking</p>
-                </div>
-
-                <!-- ============ Skills ============ -->
-                <h2 data-en="Skills" data-ja="スキル">Skills</h2>
-
-                <dl class="skills">
-                    <dt data-en="Physical AI" data-ja="フィジカルAI">Physical AI</dt>
-                    <dd data-en="Vision-Language-Action models (π0 / π0.5, X-VLA), flow matching &amp; diffusion policy, constrained RL, LeRobot, LIBERO, safety benchmark &amp; evaluation design"
-                        data-ja="Vision-Language-Actionモデル（π0 / π0.5、X-VLA）、フローマッチング／拡散ポリシー、制約付き強化学習、LeRobot、LIBERO、安全性ベンチマーク・評価設計">Vision-Language-Action models (π0 / π0.5, X-VLA), flow matching &amp; diffusion policy, constrained RL, LeRobot, LIBERO, safety benchmark &amp; evaluation design</dd>
-
-                    <dt data-en="Machine Learning" data-ja="機械学習">Machine Learning</dt>
-                    <dd data-en="Uncertainty quantification, diffusion models for time series, anomaly detection, Bayesian modeling, mechanistic interpretability, RAG / LLM agents and their evaluation"
-                        data-ja="不確実性定量化、時系列向け拡散モデル、異常検知、ベイズモデリング、機序的解釈可能性、RAG／LLMエージェントとその評価">Uncertainty quantification, diffusion models for time series, anomaly detection, Bayesian modeling, mechanistic interpretability, RAG / LLM agents and their evaluation</dd>
-
-                    <dt data-en="Programming" data-ja="プログラミング">Programming</dt>
-                    <dd>Python, SQL, R, MATLAB, C, VBA, Stan, HTML/CSS/JavaScript</dd>
-
-                    <dt data-en="ML Tooling" data-ja="MLツール">ML Tooling</dt>
-                    <dd>PyTorch, TensorFlow, Pandas, NumPy, Matplotlib, Git, MLflow, Docker, Slurm</dd>
-
-                    <dt data-en="Infrastructure" data-ja="インフラ">Infrastructure</dt>
-                    <dd data-en="GCP (Compute Engine, Cloud Run, Cloud SQL, Secret Manager), AWS (EC2, Bedrock), Azure DevOps, NVIDIA B200 GPU cluster build-out, CUDA, MLOps pipelines"
-                        data-ja="GCP（Compute Engine、Cloud Run、Cloud SQL、Secret Manager）、AWS（EC2、Bedrock）、Azure DevOps、NVIDIA B200 GPUクラスタ構築、CUDA、MLOpsパイプライン">GCP (Compute Engine, Cloud Run, Cloud SQL, Secret Manager), AWS (EC2, Bedrock), Azure DevOps, NVIDIA B200 GPU cluster build-out, CUDA, MLOps pipelines</dd>
-
-                    <dt data-en="Languages" data-ja="語学">Languages</dt>
-                    <dd data-en="Japanese (native), English (intermediate–advanced, TOEIC 870), German (A2–B1)"
-                        data-ja="日本語（母語）、英語（中級〜上級、TOEIC 870）、ドイツ語（A2〜B1）">Japanese (native), English (intermediate–advanced, TOEIC 870), German (A2–B1)</dd>
-                </dl>
-
-                <!-- ============ Work Experience ============ -->
-                <h2 data-en="Work Experience" data-ja="職務経歴">Work Experience</h2>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="Toyota Motor Corporation" data-ja="トヨタ自動車株式会社">Toyota Motor Corporation</p>
-                        <span class="entry-meta" data-en="Nagoya, Japan / Apr 2015 – Present" data-ja="名古屋 / 2015年4月 – 現在">Nagoya, Japan / Apr 2015 – Present</span>
-                    </div>
-                    <p class="entry-role" data-en="ML R&amp;D Engineer — Robot Foundation Model Researcher and Developer" data-ja="ML R&amp;Dエンジニア — ロボット基盤モデルの研究開発">ML R&amp;D Engineer — Robot Foundation Model Researcher and Developer</p>
-                    <p class="entry-sub" data-en="AI Center of Excellence, Digital &amp; Communication Division — 2025 to present" data-ja="デジタル・コミュニケーション領域 AI Center of Excellence — 2025年〜現在">AI Center of Excellence, Digital &amp; Communication Division — 2025 to present</p>
-                    <ul>
-                        <li>
-                            <strong data-en="Physical AI" data-ja="フィジカルAI">Physical AI</strong>
-                            <ul>
-                                <li data-en="Research on manipulation for embodied AI: human safety for Vision-Language-Action models; explainability for LLM / VLM / VLA; human-to-robot data transfer; reinforcement learning for VLA; world action models"
-                                    data-ja="身体性AIのマニピュレーション研究：Vision-Language-Actionモデルの人間安全性、LLM / VLM / VLAの説明可能性、人からロボットへのデータ転移、VLAへの強化学習適用、ワールドアクションモデル">Research on manipulation for embodied AI: human safety for Vision-Language-Action models; explainability for LLM / VLM / VLA; human-to-robot data transfer; reinforcement learning for VLA; world action models</li>
-                                <li data-en="Development of VLA models for a real manufacturing line" data-ja="実際の製造ラインに向けたVLAモデルの開発">Development of VLA models for a real manufacturing line</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong data-en="Infrastructure" data-ja="インフラ">Infrastructure</strong>
-                            <ul>
-                                <li data-en="Own the organization's foundation-model training platform — a multi-node NVIDIA GPU Slurm cluster on GCP serving the robotics research team"
-                                    data-ja="組織の基盤モデル学習プラットフォームを担当 — GCP上のマルチノードNVIDIA GPU Slurmクラスタをロボティクス研究チームへ提供">Own the organization's foundation-model training platform — a multi-node NVIDIA GPU Slurm cluster on GCP serving the robotics research team</li>
-                                <li data-en="Rolled out Dify Enterprise as the company-wide AI application platform" data-ja="全社AIアプリケーション基盤としてDify Enterpriseを導入">Rolled out Dify Enterprise as the company-wide AI application platform</li>
-                                <li data-en="TPU / GPU accelerator evaluation for future training capacity" data-ja="将来の学習キャパシティに向けたTPU / GPUアクセラレータの評価">TPU / GPU accelerator evaluation for future training capacity</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p class="entry-note">
-                        <span class="note-label" data-en="Earlier roles at Toyota:" data-ja="トヨタでの過去の担当：">Earlier roles at Toyota:</span>
-                        <span data-en="Seconded to Toyota Technological Institute for undergraduate study (2020 – 2025, including leave of absence 2023 – 2024) · Semiconductor manufacturing and process data analysis (2018 – 2020) · Intern, Toyota Technical Skills Academy (2015 – 2018)"
-                              data-ja="豊田工業大学へ社会人派遣・学部就学（2020年〜2025年、うち2023年〜2024年は休職） / 半導体製造・工程データ分析（2018年〜2020年） / トヨタ工業学園 実習生（2015年〜2018年）">Seconded to Toyota Technological Institute for undergraduate study (2020 – 2025, including leave of absence 2023 – 2024) · Semiconductor manufacturing and process data analysis (2018 – 2020) · Intern, Toyota Technical Skills Academy (2015 – 2018)</span>
-                    </p>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="AI Nest Inc." data-ja="株式会社AI Nest">AI Nest Inc.</p>
-                        <span class="entry-meta" data-en="Tokyo, Japan (hybrid) / Apr 2025 – Present" data-ja="東京（ハイブリッド） / 2025年4月 – 現在">Tokyo, Japan (hybrid) / Apr 2025 – Present</span>
-                    </div>
-                    <p class="entry-role" data-en="Executive Officer, Principal Research Engineer" data-ja="執行役員 / プリンシパルリサーチエンジニア">Executive Officer, Principal Research Engineer</p>
-                    <ul>
-                        <li data-en="Client delivery: designed, validated, and shipped RAG and LLM agent systems, an enterprise file search system, and an AI gateway with accompanying AI security assessment"
-                            data-ja="顧客向け開発：RAG／LLMエージェントシステム、エンタープライズファイル検索システム、AIゲートウェイ（AIセキュリティアセスメント付き）の設計・検証・リリース">Client delivery: designed, validated, and shipped RAG and LLM agent systems, an enterprise file search system, and an AI gateway with accompanying AI security assessment</li>
-                        <li data-en="In-house product development" data-ja="自社プロダクト開発">In-house product development</li>
-                        <li data-en="Act as both product manager and hands-on engineer on client and in-house work alike — owning scope and roadmap while building the systems"
-                            data-ja="顧客案件・自社開発の双方でプロダクトマネージャーと実装エンジニアを兼務 — スコープとロードマップを持ちながら自ら開発">Act as both product manager and hands-on engineer on client and in-house work alike — owning scope and roadmap while building the systems</li>
-                        <li data-en="Presales across both lines — scoping technical requirements, proposing solutions, and carrying the same engagements through to delivery"
-                            data-ja="プリセールスも担当 — 技術要件の整理と提案から、そのまま同じ案件をデリバリーまで一貫して推進">Presales across both lines — scoping technical requirements, proposing solutions, and carrying the same engagements through to delivery</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="The University of Tokyo" data-ja="東京大学">The University of Tokyo</p>
-                        <span class="entry-meta" data-en="Remote / Sep 2024 – Present" data-ja="リモート / 2024年9月 – 現在">Remote / Sep 2024 – Present</span>
-                    </div>
-                    <p class="entry-role" data-en="AI Software Developer → Manager" data-ja="AIソフトウェア開発者 → マネージャー">AI Software Developer → Manager</p>
-                    <ul>
-                        <li data-en="Develop an AI agent system that automates the grading of PDF assignment submissions for the GCI endowed course"
-                            data-ja="GCI寄付講座の課題PDF提出物の採点を自動化するAIエージェントシステムを開発">Develop an AI agent system that automates the grading of PDF assignment submissions for the GCI endowed course</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="Matsuo Institute, Inc." data-ja="株式会社松尾研究所">Matsuo Institute, Inc.</p>
-                        <span class="entry-meta" data-en="Remote / Oct 2024 – Feb 2026" data-ja="リモート / 2024年10月 – 2026年2月">Remote / Oct 2024 – Feb 2026</span>
-                    </div>
-                    <p class="entry-role" data-en="ML Software Engineer / Senior Data Scientist — RAG, Agents" data-ja="MLソフトウェアエンジニア / シニアデータサイエンティスト — RAG・エージェント">ML Software Engineer / Senior Data Scientist — RAG, Agents</p>
-                    <ul>
-                        <li data-en="Designed and evaluated retrieval-augmented generation and LLM agent systems"
-                            data-ja="RAG（検索拡張生成）およびLLMエージェントシステムの設計と評価">Designed and evaluated retrieval-augmented generation and LLM agent systems</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org">AT&amp;S Austria Technologie &amp; Systemtechnik AG</p>
-                        <span class="entry-meta" data-en="Leoben, Austria / 2023 – 2024" data-ja="オーストリア・レオーベン / 2023年 – 2024年">Leoben, Austria / 2023 – 2024</span>
-                    </div>
-                    <p class="entry-role" data-en="Data Science Intern, Semiconductor R&amp;D" data-ja="データサイエンスインターン（半導体R&amp;D）">Data Science Intern, Semiconductor R&amp;D</p>
-                    <ul>
-                        <li data-en="Developed anomaly detection models on semiconductor manufacturing data using Python and SQL"
-                            data-ja="PythonとSQLを用いた半導体製造データの異常検知モデルを開発">Developed anomaly detection models on semiconductor manufacturing data using Python and SQL</li>
-                        <li data-en="Built an electric potential trajectory prediction model as a learned surrogate for semiconductor process simulation"
-                            data-ja="半導体プロセスシミュレーションの代理モデルとして、電位軌跡の予測モデルを構築">Built an electric potential trajectory prediction model as a learned surrogate for semiconductor process simulation</li>
-                        <li data-en="Established MLOps workflows for the R&amp;D team — experiment tracking, model versioning, and reproducible training pipelines"
-                            data-ja="R&amp;Dチーム向けのMLOpsワークフローを整備 — 実験管理、モデルバージョニング、再現可能な学習パイプライン">Established MLOps workflows for the R&amp;D team — experiment tracking, model versioning, and reproducible training pipelines</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org" data-en="AVILEN Inc." data-ja="株式会社AVILEN">AVILEN Inc.</p>
-                        <span class="entry-meta" data-en="Remote / 2020 – 2024" data-ja="リモート / 2020年 – 2024年">Remote / 2020 – 2024</span>
-                    </div>
-                    <p class="entry-role" data-en="AI Developer, Educational Content Development" data-ja="AI開発 / 教育コンテンツ開発">AI Developer, Educational Content Development</p>
-                    <ul>
-                        <li data-en="Authored curriculum and teaching materials for data science, and for the JDLA E-Certification and G-Certification programs, alongside AI development work"
-                            data-ja="データサイエンスおよびJDLA E資格・G資格向けのカリキュラム・教材を執筆し、あわせてAI開発にも従事">Authored curriculum and teaching materials for data science, and for the JDLA E-Certification and G-Certification programs, alongside AI development work</li>
-                    </ul>
-                </div>
-
-                <!-- ============ Research (summary → publications page) ============ -->
-                <h2 data-en="Publications &amp; Research" data-ja="研究業績">Publications &amp; Research</h2>
-                <p data-en="Selected work on uncertainty-guided diffusion forecasting and post-training for robot foundation models." data-ja="拡散モデルによる時系列予測の不確実性活用と、ロボット基盤モデルのポストトレーニングに関する主な業績です。">Selected work on uncertainty-guided diffusion forecasting and post-training for robot foundation models.</p>
-                <p><a href="publications.html" data-en="See all publications and research →" data-ja="研究業績の一覧を見る →">See all publications and research →</a></p>
-            </section>
-
-            <div class="last-modified">
-                <img src="image.png" alt="">
-                <span data-en="Last updated: August 2026" data-ja="最終更新: 2026年8月">Last updated: August 2026</span>
-            </div>
-
-            <a class="back-to-top" href="#about-me" data-en="Back to Top" data-ja="トップに戻る">Back to Top</a>
-        </main>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="resume.html" data-en="Full résumé" data-ja="経歴書を見る">Full résumé</a>
+        <a class="btn" href="mailto:uenokouki.soccer@gmail.com">Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
-    <script src="language-switcher.js"></script>
+  </header>
+
+  <!-- ================= NOW ================= -->
+  <section class="section" id="now">
+    <p class="section-label">
+      <span class="num">01</span>
+      <span class="title" data-en="Now" data-ja="現在">Now</span>
+    </p>
+
+    <div class="card-grid cols-3">
+      <article class="card">
+        <div class="card-top">
+          <h3 class="card-org" data-en="Toyota Motor Corporation" data-ja="トヨタ自動車">Toyota Motor Corporation</h3>
+          <span class="card-when">2015 —</span>
+        </div>
+        <p class="card-role" data-en="ML R&amp;D Engineer, AI CoE" data-ja="ML R&amp;Dエンジニア / AI CoE">ML R&amp;D Engineer, AI CoE</p>
+        <p class="card-note" data-en="VLA models for a real manufacturing line, and the multi-node GPU cluster the robotics team trains on."
+           data-ja="実製造ライン向けVLAモデルの開発と、ロボティクスチームが使うマルチノードGPUクラスタの運用。">VLA models for a real manufacturing line, and the multi-node GPU cluster the robotics team trains on.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3 class="card-org" data-en="AI Nest Inc." data-ja="AI Nest">AI Nest Inc.</h3>
+          <span class="card-when">2025 —</span>
+        </div>
+        <p class="card-role" data-en="Executive Officer, Principal Research Engineer" data-ja="執行役員 / プリンシパルリサーチエンジニア">Executive Officer, Principal Research Engineer</p>
+        <p class="card-note" data-en="RAG and LLM agent systems for clients — owning scope and roadmap while building them."
+           data-ja="顧客向けRAG・LLMエージェントシステム。スコープとロードマップを持ちつつ自ら実装。">RAG and LLM agent systems for clients — owning scope and roadmap while building them.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3 class="card-org" data-en="The University of Tokyo" data-ja="東京大学">The University of Tokyo</h3>
+          <span class="card-when">2024 —</span>
+        </div>
+        <p class="card-role" data-en="AI Software Developer → Manager" data-ja="AI開発者 → マネージャー">AI Software Developer → Manager</p>
+        <p class="card-note" data-en="An agent system that auto-grades PDF assignments for the GCI endowed course."
+           data-ja="GCI寄付講座の課題PDFを自動採点するエージェントシステム。">An agent system that auto-grades PDF assignments for the GCI endowed course.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= FOCUS ================= -->
+  <section class="section" id="focus">
+    <p class="section-label">
+      <span class="num">02</span>
+      <span class="title" data-en="What I work on" data-ja="注力領域">What I work on</span>
+    </p>
+
+    <div class="card-grid cols-3">
+      <article class="tile">
+        <h3 data-en="Vision-Language-Action" data-ja="Vision-Language-Action">Vision-Language-Action</h3>
+        <p data-en="Manipulation policies, plus human safety and explainability for VLA — the part that decides whether a robot ships."
+           data-ja="マニピュレーションのポリシーと、VLAの人間安全性・説明可能性。実機投入の可否を決める部分。">Manipulation policies, plus human safety and explainability for VLA — the part that decides whether a robot ships.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="LLM agents in production" data-ja="実運用のLLMエージェント">LLM agents in production</h3>
+        <p data-en="RAG, enterprise search, and AI gateways — designed, evaluated, and actually shipped to users."
+           data-ja="RAG、社内検索、AIゲートウェイ。設計・評価から実際のリリースまで。">RAG, enterprise search, and AI gateways — designed, evaluated, and actually shipped to users.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Training infrastructure" data-ja="学習基盤">Training infrastructure</h3>
+        <p data-en="Foundation-model training at scale: NVIDIA GPU Slurm clusters on GCP, MLOps, accelerator evaluation."
+           data-ja="基盤モデルの大規模学習。GCP上のNVIDIA GPU Slurmクラスタ、MLOps、アクセラレータ評価。">Foundation-model training at scale: NVIDIA GPU Slurm clusters on GCP, MLOps, accelerator evaluation.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section class="section" id="stack">
+    <p class="section-label">
+      <span class="num">03</span>
+      <span class="title" data-en="Stack" data-ja="スキル">Stack</span>
+    </p>
+
+    <div class="tag-group">
+      <h3 data-en="Physical AI" data-ja="フィジカルAI">Physical AI</h3>
+      <ul class="tags">
+        <li class="hot">π0 / π0.5</li>
+        <li class="hot">X-VLA</li>
+        <li>Flow matching</li>
+        <li>Diffusion policy</li>
+        <li>Constrained RL</li>
+        <li>LeRobot</li>
+        <li>LIBERO</li>
+      </ul>
+    </div>
+
+    <div class="tag-group">
+      <h3 data-en="Machine learning" data-ja="機械学習">Machine learning</h3>
+      <ul class="tags">
+        <li>Uncertainty quantification</li>
+        <li>Diffusion for time series</li>
+        <li>Anomaly detection</li>
+        <li>Bayesian modeling</li>
+        <li>Interpretability</li>
+        <li>RAG / agent evaluation</li>
+      </ul>
+    </div>
+
+    <div class="tag-group">
+      <h3 data-en="Languages &amp; tooling" data-ja="言語・ツール">Languages &amp; tooling</h3>
+      <ul class="tags">
+        <li>Python</li>
+        <li>SQL</li>
+        <li>R</li>
+        <li>MATLAB</li>
+        <li>C</li>
+        <li>Stan</li>
+        <li>PyTorch</li>
+        <li>TensorFlow</li>
+        <li>Docker</li>
+        <li>MLflow</li>
+        <li>Git</li>
+      </ul>
+    </div>
+
+    <div class="tag-group">
+      <h3 data-en="Infrastructure" data-ja="インフラ">Infrastructure</h3>
+      <ul class="tags">
+        <li>GCP</li>
+        <li>AWS</li>
+        <li>Slurm</li>
+        <li>CUDA</li>
+        <li>NVIDIA B200</li>
+        <li>Azure DevOps</li>
+      </ul>
+    </div>
+
+    <div class="tag-group">
+      <h3 data-en="Spoken" data-ja="語学">Spoken</h3>
+      <ul class="tags">
+        <li data-en="Japanese — native" data-ja="日本語 — 母語">Japanese — native</li>
+        <li data-en="English — TOEIC 870" data-ja="英語 — TOEIC 870">English — TOEIC 870</li>
+        <li data-en="German — A2/B1" data-ja="ドイツ語 — A2/B1">German — A2/B1</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section class="section" id="research">
+    <p class="section-label">
+      <span class="num">04</span>
+      <span class="title" data-en="Selected research" data-ja="主な研究">Selected research</span>
+    </p>
+
+    <div class="pub">
+      <h3>Uncertainty-Guided Iterative Decoding for Diffusion-Based Time Series Forecasting</h3>
+      <p class="venue">IJCAI 2025 · AI4TS Workshop</p>
+      <p data-en="Extended version under review at Transactions on Artificial Intelligence."
+         data-ja="拡張版を Transactions on Artificial Intelligence に投稿中。">Extended version under review at Transactions on Artificial Intelligence.</p>
+    </div>
+
+    <div class="pub">
+      <h3>Post-Training π0.5 for Bimanual Manipulation</h3>
+      <p class="venue">RSS 2026 · Robotics Foundation Models Challenge</p>
+      <p data-en="Reward-weighted SFT with a VLM-based reward model. Presented in Sydney."
+         data-ja="VLMベース報酬モデルによる報酬重み付きSFT。シドニーで発表。">Reward-weighted SFT with a VLM-based reward model. Presented in Sydney.</p>
+    </div>
+
+    <p><a href="publications.html" data-en="All research →" data-ja="研究一覧 →">All research →</a></p>
+  </section>
+
+  <!-- ================= BACKGROUND ================= -->
+  <section class="section" id="background">
+    <p class="section-label">
+      <span class="num">05</span>
+      <span class="title" data-en="Background" data-ja="これまで">Background</span>
+    </p>
+
+    <ul class="rows">
+      <li>
+        <span class="r-org" data-en="Matsuo Institute" data-ja="松尾研究所">Matsuo Institute</span>
+        <span class="r-role" data-en="ML Engineer / Senior Data Scientist" data-ja="MLエンジニア / シニアデータサイエンティスト">ML Engineer / Senior Data Scientist</span>
+        <span class="r-when">2024 – 2026</span>
+      </li>
+      <li>
+        <span class="r-org">AT&amp;S</span>
+        <span class="r-role" data-en="Data Science Intern, Semiconductor R&amp;D · Austria" data-ja="データサイエンスインターン / 半導体R&amp;D · オーストリア">Data Science Intern, Semiconductor R&amp;D · Austria</span>
+        <span class="r-when">2023 – 2024</span>
+      </li>
+      <li>
+        <span class="r-org">AVILEN</span>
+        <span class="r-role" data-en="AI Developer · JDLA E/G certification curriculum" data-ja="AI開発 · JDLA E資格・G資格カリキュラム">AI Developer · JDLA E/G certification curriculum</span>
+        <span class="r-when">2020 – 2024</span>
+      </li>
+      <li>
+        <span class="r-org" data-en="Toyota Technological Institute" data-ja="豊田工業大学">Toyota Technological Institute</span>
+        <span class="r-role" data-en="B.Eng, Electronic &amp; Information Engineering" data-ja="学士（工学） 電子情報工学">B.Eng, Electronic &amp; Information Engineering</span>
+        <span class="r-when">2020 – 2025</span>
+      </li>
+      <li>
+        <span class="r-org" data-en="The University of Tokyo" data-ja="東京大学">The University of Tokyo</span>
+        <span class="r-role" data-en="GCI, Matsuo Lab — Excellent Award" data-ja="GCI 松尾研究室 — 優秀賞">GCI, Matsuo Lab — Excellent Award</span>
+        <span class="r-when">2023 – 2024</span>
+      </li>
+      <li>
+        <span class="r-org" data-en="UC Davis" data-ja="UC Davis">UC Davis</span>
+        <span class="r-role" data-en="Summer Program — Entrepreneurship" data-ja="サマープログラム — 起業家精神">Summer Program — Entrepreneurship</span>
+        <span class="r-when">2022</span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer wrap">
+  <span>© 2026 Koki Ueno</span>
+  <ul class="footer-links">
+    <li><a href="mailto:uenokouki.soccer@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+  </ul>
+</footer>
+
+<script src="language-switcher.js"></script>
 </body>
 </html>

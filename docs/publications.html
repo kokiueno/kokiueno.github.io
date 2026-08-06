@@ -1,84 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Publications and research by Koki Ueno — diffusion-based time series forecasting and post-training for robot foundation models.">
-    <title>Publications - Koki Ueno's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Research by Koki Ueno — diffusion-based time series forecasting and post-training for robot foundation models.">
+<title>Research — Koki Ueno</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="about-me.html" data-en="About Me" data-ja="自己紹介">About Me</a></li>
-            <li><a href="portfolio.html" data-en="Portfolio" data-ja="ポートフォリオ">Portfolio</a></li>
-            <li><a href="publications.html" data-en="Publications" data-ja="研究業績">Publications</a></li>
-            <li><button id="language-toggle" onclick="toggleLanguage()">日本語</button></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <aside>
-            <img src="koki.JPG" alt="Koki Ueno" class="profile-pic">
-            <h3 class="center-text">上野航希 / Koki Ueno</h3>
-            <p class="introduction" data-en="Physical AI &amp; Machine Learning" data-ja="フィジカルAI / 機械学習">Physical AI &amp; Machine Learning</p>
 
-            <section class="sidebar-content">
-                <ul class="sidebar-links">
-                    <li><a href="about-me.html" data-en="About Me" data-ja="自己紹介">About Me</a></li>
-                    <li><a href="portfolio.html" data-en="Portfolio" data-ja="ポートフォリオ">Portfolio</a></li>
-                    <li><a href="publications.html" data-en="Publications" data-ja="研究業績">Publications</a></li>
-                </ul>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="about-me.html">Koki&nbsp;Ueno</a>
+    <ul class="nav-links">
+      <li><a href="about-me.html" data-en="About" data-ja="紹介">About</a></li>
+      <li><a href="portfolio.html" data-en="Work" data-ja="仕事">Work</a></li>
+      <li><a href="publications.html" aria-current="page" data-en="Research" data-ja="研究">Research</a></li>
+      <li><a href="resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+    </ul>
+    <button id="language-toggle" onclick="toggleLanguage()">日本語</button>
+  </div>
+</nav>
 
-                <ul class="contact-list">
-                    <li data-en="Nagoya, Aichi, Japan" data-ja="愛知県名古屋市">Nagoya, Aichi, Japan</li>
-                    <li><a href="mailto:uenokouki.soccer@gmail.com">uenokouki.soccer@gmail.com</a></li>
-                    <li><a href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a></li>
-                </ul>
-            </section>
-        </aside>
+<main class="wrap">
 
-        <main>
-            <section id="publications">
-                <h1 data-en="Publications &amp; Research" data-ja="研究業績">Publications &amp; Research</h1>
-                <p class="page-lede" data-en="Peer-reviewed work, workshop papers, and competition entries." data-ja="査読論文、ワークショップ論文、コンペティションでの取り組みを掲載しています。">Peer-reviewed work, workshop papers, and competition entries.</p>
+  <p class="eyebrow" style="margin-top:clamp(36px,6vw,64px);margin-bottom:0" data-en="Research" data-ja="研究">Research</p>
+  <h1 class="page-title" style="margin-top:8px" data-en="Papers &amp; challenges" data-ja="論文とコンペティション">Papers &amp; challenges</h1>
+  <p class="lede" data-en="Uncertainty in generative forecasting, and post-training robot foundation models so they hold up on real hardware."
+     data-ja="生成モデルによる予測の不確実性と、実機で通用させるためのロボット基盤モデルのポストトレーニング。">Uncertainty in generative forecasting, and post-training robot foundation models so they hold up on real hardware.</p>
 
-                <h2 data-en="Papers" data-ja="論文">Papers</h2>
+  <section class="section" id="papers">
+    <p class="section-label">
+      <span class="num">01</span>
+      <span class="title" data-en="Papers" data-ja="論文">Papers</span>
+    </p>
 
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org">Uncertainty-Guided Iterative Decoding for Diffusion-Based Time Series Forecasting (UGID)</p>
-                        <span class="entry-meta">2025</span>
-                    </div>
-                    <ul>
-                        <li data-en="IJCAI 2025 AI4TS Workshop" data-ja="IJCAI 2025 AI4TS ワークショップ採択">IJCAI 2025 AI4TS Workshop</li>
-                        <li data-en="Extended version under review at Transactions on Artificial Intelligence" data-ja="拡張版を Transactions on Artificial Intelligence に投稿中（査読中）">Extended version under review at Transactions on Artificial Intelligence</li>
-                    </ul>
-                </div>
-
-                <h2 data-en="Competitions &amp; Challenges" data-ja="コンペティション">Competitions &amp; Challenges</h2>
-
-                <div class="entry">
-                    <div class="entry-head">
-                        <p class="entry-org">RSS 2026 Post-Training for Robotics Foundation Models Challenge</p>
-                        <span class="entry-meta">2026</span>
-                    </div>
-                    <ul>
-                        <li data-en="Post-trained π0.5 for bimanual manipulation on the YAM robot — HIL-aware data curation and reward-weighted SFT with a VLM-based reward model"
-                            data-ja="YAMロボットの双腕マニピュレーション向けに π0.5 をポストトレーニング — HILを考慮したデータキュレーションと、VLMベース報酬モデルによる報酬重み付きSFT">Post-trained π0.5 for bimanual manipulation on the YAM robot — HIL-aware data curation and reward-weighted SFT with a VLM-based reward model</li>
-                        <li data-en="Presented the technical report and poster, and joined the panel discussion, at the RSS 2026 workshop in Sydney"
-                            data-ja="RSS 2026ワークショップ（シドニー）にてテクニカルレポートとポスターを発表し、パネルディスカッションに登壇">Presented the technical report and poster, and joined the panel discussion, at the RSS 2026 workshop in Sydney</li>
-                    </ul>
-                </div>
-            </section>
-
-            <div class="last-modified">
-                <img src="image.png" alt="">
-                <span data-en="Last updated: August 2026" data-ja="最終更新: 2026年8月">Last updated: August 2026</span>
-            </div>
-
-            <a class="back-to-top" href="#publications" data-en="Back to Top" data-ja="トップに戻る">Back to Top</a>
-        </main>
+    <div class="pub">
+      <h3>Uncertainty-Guided Iterative Decoding for Diffusion-Based Time Series Forecasting (UGID)</h3>
+      <p class="venue">IJCAI 2025 · AI4TS Workshop · 2025</p>
+      <p data-en="Diffusion forecasters commit to early denoising steps they are not confident about. UGID uses per-step uncertainty to decide where to iterate, improving accuracy without retraining the base model. Extended version under review at Transactions on Artificial Intelligence."
+         data-ja="拡散モデルによる予測は、確信の低い初期のデノイジング結果をそのまま引き継いでしまう。UGIDはステップごとの不確実性を用いて反復すべき箇所を決め、ベースモデルを再学習せずに精度を改善する。拡張版を Transactions on Artificial Intelligence に投稿中。">Diffusion forecasters commit to early denoising steps they are not confident about. UGID uses per-step uncertainty to decide where to iterate, improving accuracy without retraining the base model. Extended version under review at Transactions on Artificial Intelligence.</p>
     </div>
-    <script src="language-switcher.js"></script>
+  </section>
+
+  <section class="section" id="challenges">
+    <p class="section-label">
+      <span class="num">02</span>
+      <span class="title" data-en="Challenges" data-ja="コンペティション">Challenges</span>
+    </p>
+
+    <div class="pub">
+      <h3>Post-Training π0.5 for Bimanual Manipulation on the YAM Robot</h3>
+      <p class="venue">RSS 2026 · Post-Training for Robotics Foundation Models Challenge · 2026</p>
+      <p data-en="HIL-aware data curation plus reward-weighted SFT, using a VLM as the reward model. Presented the technical report and poster and joined the panel discussion at the RSS 2026 workshop in Sydney."
+         data-ja="HILを考慮したデータキュレーションと、VLMを報酬モデルに用いた報酬重み付きSFT。RSS 2026ワークショップ（シドニー）でテクニカルレポートとポスターを発表し、パネルディスカッションに登壇。">HIL-aware data curation plus reward-weighted SFT, using a VLM as the reward model. Presented the technical report and poster and joined the panel discussion at the RSS 2026 workshop in Sydney.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer wrap">
+  <span>© 2026 Koki Ueno</span>
+  <ul class="footer-links">
+    <li><a href="mailto:uenokouki.soccer@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+  </ul>
+</footer>
+
+<script src="language-switcher.js"></script>
 </body>
 </html>
