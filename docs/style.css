@@ -718,7 +718,11 @@ a:hover {
    and `img{max-width:100%}` would then squash the portrait into an ellipse. */
 @media (min-width: 1200px) {
     .hero-avatar {
-        transform: translateX(max(-90px, calc((var(--maxw) - 100vw) / 4)));
+        /* how far left we would like it, and how far we actually can go
+           before the portrait crowds the viewport edge — whichever is less */
+        --pull-wanted: calc(90px + 2cm);
+        --pull-room: calc((100vw - var(--maxw)) / 2 + 24px);
+        transform: translateX(calc(-1 * min(var(--pull-wanted), var(--pull-room))));
     }
 }
 
