@@ -15,6 +15,7 @@ function toggleLanguage() {
 }
 
 function setLanguage(lang) {
+    document.documentElement.lang = lang === 'en' ? 'en' : 'ja';
     const elements = document.querySelectorAll('[data-en][data-ja]');
     elements.forEach(element => {
         if (lang === 'en') {
