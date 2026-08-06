@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Research by Koki Ueno — diffusion-based time series forecasting and post-training for robot foundation models.">
+<meta name="description" content="Research by Koki Ueno — EUGID, an uncertainty-guided iterative decoding strategy for diffusion-based time series forecasting, and post-training for robot foundation models.">
 <title>Research — Koki Ueno</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -25,33 +25,101 @@
 <main class="wrap">
 
   <p class="eyebrow" style="margin-top:clamp(36px,6vw,64px);margin-bottom:0" data-en="Research" data-ja="研究">Research</p>
-  <h1 class="page-title" style="margin-top:8px" data-en="Papers &amp; challenges" data-ja="論文とコンペティション">Papers &amp; challenges</h1>
+  <h1 class="page-title" style="margin-top:8px" data-en="Publications" data-ja="研究業績">Publications</h1>
   <p class="lede" data-en="Uncertainty in generative forecasting, and post-training robot foundation models so they hold up on real hardware."
      data-ja="生成モデルによる予測の不確実性と、実機で通用させるためのロボット基盤モデルのポストトレーニング。">Uncertainty in generative forecasting, and post-training robot foundation models so they hold up on real hardware.</p>
 
+  <!-- ================= PAPERS ================= -->
   <section class="section" id="papers">
     <p class="section-label">
       <span class="num">01</span>
       <span class="title" data-en="Papers" data-ja="論文">Papers</span>
     </p>
 
+    <!-- IJCAI 2025 -->
     <div class="pub">
-      <h3>Uncertainty-Guided Iterative Decoding for Diffusion-Based Time Series Forecasting (UGID)</h3>
-      <p class="venue">IJCAI 2025 · AI4TS Workshop · 2025</p>
-      <p data-en="Diffusion forecasters commit to early denoising steps they are not confident about. UGID uses per-step uncertainty to decide where to iterate, improving accuracy without retraining the base model. Extended version under review at Transactions on Artificial Intelligence."
-         data-ja="拡散モデルによる予測は、確信の低い初期のデノイジング結果をそのまま引き継いでしまう。UGIDはステップごとの不確実性を用いて反復すべき箇所を決め、ベースモデルを再学習せずに精度を改善する。拡張版を Transactions on Artificial Intelligence に投稿中。">Diffusion forecasters commit to early denoising steps they are not confident about. UGID uses per-step uncertainty to decide where to iterate, improving accuracy without retraining the base model. Extended version under review at Transactions on Artificial Intelligence.</p>
+      <h3>Empirically Estimated Uncertainty-Guided Iterative Decoding Strategy of Diffusion Models for Time Series Forecasting</h3>
+      <p class="authors">
+        <span class="me">Koki Ueno</span>, Kohei Makino, Yutaka Sasaki — Toyota Technological Institute
+      </p>
+      <p class="venue">IJCAI 2025 · AI4TS Workshop</p>
+      <p data-en="EUGID brings uncertainty sampling into the decoding loop of a time series diffusion model: it estimates the variance of the prediction at each time step, re-adds noise in proportion to that uncertainty, and iteratively resamples the points it is least confident about. It improves on CSDI across 7 of 8 standard benchmarks — roughly 67% lower MSE on ETTm2 — and the history-based uncertainty estimator works best."
+         data-ja="EUGIDは、不確実性サンプリングを時系列拡散モデルのデコーディング過程へ導入する手法です。各時点における予測の分散を不確実性として推定し、それに応じてノイズを再付与することで、確信度の低い予測点を反復的にリサンプリングします。標準ベンチマーク8個中7個でCSDIを上回り、ETTm2ではMSEを約67%削減。不確実性の推定方法は履歴ベースが最も有効でした。">EUGID brings uncertainty sampling into the decoding loop of a time series diffusion model: it estimates the variance of the prediction at each time step, re-adds noise in proportion to that uncertainty, and iteratively resamples the points it is least confident about. It improves on CSDI across 7 of 8 standard benchmarks — roughly 67% lower MSE on ETTm2 — and the history-based uncertainty estimator works best.</p>
+      <ul class="pub-links">
+        <li><a href="posters/ijcai2025-eugid-poster.pdf" target="_blank" rel="noopener"><span data-en="Poster (PDF)" data-ja="ポスター (PDF)">Poster (PDF)</span> <span class="size">3.4&nbsp;MB</span></a></li>
+        <!-- paper PDF goes here once available:
+        <li><a href="papers/ijcai2025-eugid.pdf" target="_blank" rel="noopener">Paper (PDF)</a></li> -->
+      </ul>
+    </div>
+
+    <!-- JSAI 2025 -->
+    <div class="pub">
+      <h3>経験的に推定した不確実性分布に基づく時系列予測のための拡散モデルの反復的なデコーディング戦略</h3>
+      <p class="authors">
+        <span class="me">上野 航希</span>, 牧野 晃平, 佐々木 裕 — 豊田工業大学 知能数理研究室
+      </p>
+      <p class="venue">JSAI 2025 · 第39回 人工知能学会全国大会</p>
+      <p data-en="The Japanese-language presentation of the same work, given at the 39th Annual Conference of the Japanese Society for Artificial Intelligence."
+         data-ja="同一研究の日本語発表。第39回人工知能学会全国大会にて発表しました。">The Japanese-language presentation of the same work, given at the 39th Annual Conference of the Japanese Society for Artificial Intelligence.</p>
+      <ul class="pub-links">
+        <li><a href="posters/jsai2025-eugid-poster.pdf" target="_blank" rel="noopener"><span data-en="Poster (PDF)" data-ja="ポスター (PDF)">Poster (PDF)</span> <span class="size">3.5&nbsp;MB</span></a></li>
+        <!-- paper PDF goes here once available:
+        <li><a href="papers/jsai2025-eugid.pdf" target="_blank" rel="noopener">論文 (PDF)</a></li> -->
+      </ul>
+    </div>
+
+    <!-- Journal extension -->
+    <div class="pub">
+      <h3 data-en="EUGID — extended version" data-ja="EUGID 拡張版">EUGID — extended version</h3>
+      <p class="venue" data-en="Under review · Transactions on Artificial Intelligence" data-ja="査読中 · Transactions on Artificial Intelligence">Under review · Transactions on Artificial Intelligence</p>
+      <p data-en="A journal-length treatment of the decoding strategy, currently under review."
+         data-ja="デコーディング戦略をジャーナル論文としてまとめた拡張版。現在査読中です。">A journal-length treatment of the decoding strategy, currently under review.</p>
     </div>
   </section>
 
-  <section class="section" id="challenges">
+  <!-- ================= POSTERS ================= -->
+  <section class="section" id="posters">
     <p class="section-label">
       <span class="num">02</span>
+      <span class="title" data-en="Posters" data-ja="ポスター">Posters</span>
+    </p>
+    <p class="lede" data-en="Click a poster to open the full-resolution PDF." data-ja="クリックすると原寸のPDFが開きます。">Click a poster to open the full-resolution PDF.</p>
+
+    <div class="poster-grid">
+      <article class="poster">
+        <a class="poster-shot" href="posters/ijcai2025-eugid-poster.pdf" target="_blank" rel="noopener">
+          <img src="posters/ijcai2025-eugid-poster.jpg" width="1200" height="1698" loading="lazy"
+               alt="IJCAI 2025 AI4TS Workshop poster: Empirically Estimated Uncertainty-Guided Iterative Decoding Strategy of Diffusion Models for Time Series Forecasting">
+        </a>
+        <div class="poster-body">
+          <h3 data-en="EUGID — English poster" data-ja="EUGID 英語ポスター">EUGID — English poster</h3>
+          <p>IJCAI 2025 · AI4TS Workshop</p>
+        </div>
+      </article>
+
+      <article class="poster">
+        <a class="poster-shot" href="posters/jsai2025-eugid-poster.pdf" target="_blank" rel="noopener">
+          <img src="posters/jsai2025-eugid-poster.jpg" width="1200" height="1698" loading="lazy"
+               alt="JSAI 2025 poster: 経験的に推定した不確実性分布に基づく時系列予測のための拡散モデルの反復的なデコーディング戦略">
+        </a>
+        <div class="poster-body">
+          <h3 data-en="EUGID — Japanese poster" data-ja="EUGID 日本語ポスター">EUGID — Japanese poster</h3>
+          <p>JSAI 2025 · 人工知能学会全国大会</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= CHALLENGES ================= -->
+  <section class="section" id="challenges">
+    <p class="section-label">
+      <span class="num">03</span>
       <span class="title" data-en="Challenges" data-ja="コンペティション">Challenges</span>
     </p>
 
     <div class="pub">
       <h3>Post-Training π0.5 for Bimanual Manipulation on the YAM Robot</h3>
-      <p class="venue">RSS 2026 · Post-Training for Robotics Foundation Models Challenge · 2026</p>
+      <p class="venue">RSS 2026 · Post-Training for Robotics Foundation Models Challenge</p>
       <p data-en="HIL-aware data curation plus reward-weighted SFT, using a VLM as the reward model. Presented the technical report and poster and joined the panel discussion at the RSS 2026 workshop in Sydney."
          data-ja="HILを考慮したデータキュレーションと、VLMを報酬モデルに用いた報酬重み付きSFT。RSS 2026ワークショップ（シドニー）でテクニカルレポートとポスターを発表し、パネルディスカッションに登壇。">HIL-aware data curation plus reward-weighted SFT, using a VLM as the reward model. Presented the technical report and poster and joined the panel discussion at the RSS 2026 workshop in Sydney.</p>
     </div>

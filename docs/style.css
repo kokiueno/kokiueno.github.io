@@ -510,6 +510,107 @@ a:hover {
     font-size: clamp(14px, 1.6vw, 15.5px);
 }
 
+.pub .authors {
+    font-size: clamp(13px, 1.5vw, 14.5px);
+    color: var(--text-dim);
+    margin: 0 0 8px;
+}
+
+.pub .authors .me {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 0;
+    list-style: none;
+    padding: 0;
+}
+
+.pub-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: clamp(12.5px, 1.4vw, 13.8px);
+    padding: 5px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    color: var(--text-dim);
+}
+
+.pub-links a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+}
+
+.pub-links .size {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: .85em;
+}
+
+/* ---------- Poster previews ---------- */
+
+.poster-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(14px, 2.4vw, 22px);
+}
+
+@media (min-width: 720px) {
+    .poster-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.poster {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+}
+
+.poster:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* the poster artwork is on white paper — keep it on white in both themes */
+.poster-shot {
+    display: block;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.poster-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.poster-body {
+    padding: clamp(14px, 2.2vw, 18px);
+}
+
+.poster-body h3 {
+    font-size: clamp(14.5px, 1.7vw, 16px);
+    margin: 0 0 4px;
+    letter-spacing: -.01em;
+}
+
+.poster-body p {
+    margin: 0;
+    font-size: clamp(12.5px, 1.4vw, 13.8px);
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    letter-spacing: .04em;
+}
+
 .lede {
     color: var(--text-dim);
     font-size: clamp(14.5px, 1.8vw, 17px);
