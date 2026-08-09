@@ -478,6 +478,37 @@ a:hover {
     color: var(--accent);
 }
 
+/* ---------- Figure ---------- */
+
+.figure {
+    margin: 0 0 clamp(16px, 2.6vw, 24px);
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: clamp(14px, 2.4vw, 26px);
+}
+
+.figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.figure figcaption {
+    margin-top: clamp(10px, 1.8vw, 14px);
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    font-size: clamp(12.5px, 1.5vw, 14px);
+    color: var(--text-dim);
+}
+
+.figure .credit {
+    display: block;
+    margin-top: 4px;
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    color: var(--text-faint);
+}
+
 /* ---------- Publication entries ---------- */
 
 .pub {

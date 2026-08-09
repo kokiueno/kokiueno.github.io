@@ -26,8 +26,8 @@
 
   <p class="eyebrow" style="margin-top:clamp(36px,6vw,64px);margin-bottom:0" data-en="Work" data-ja="仕事">Work</p>
   <h1 class="page-title" style="margin-top:8px" data-en="What I build" data-ja="つくっているもの">What I build</h1>
-  <p class="lede" data-en="Three lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code."
-     data-ja="大きく3つの領域。多くは社内・顧客案件のため詳細は公開できないので、扱っている問題の輪郭を書いています。">Three lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code.</p>
+  <p class="lede" data-en="Four lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code."
+     data-ja="大きく4つの領域。多くは社内・顧客案件のため詳細は公開できないので、扱っている問題の輪郭を書いています。">Four lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code.</p>
 
   <section class="section" id="vla">
     <p class="section-label">
@@ -102,6 +102,43 @@
         <h3 data-en="MLOps for an R&amp;D team" data-ja="R&amp;DチームのMLOps">MLOps for an R&amp;D team</h3>
         <p data-en="At AT&amp;S: experiment tracking, model versioning, and reproducible training pipelines for semiconductor R&amp;D."
            data-ja="AT&amp;Sにて、半導体R&amp;D向けの実験管理・モデルバージョニング・再現可能な学習パイプラインを整備。">At AT&amp;S: experiment tracking, model versioning, and reproducible training pipelines for semiconductor R&amp;D.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="fem">
+    <p class="section-label">
+      <span class="num">04</span>
+      <span class="title" data-en="PCB simulation &amp; field prediction" data-ja="PCBシミュレーションと場の予測">PCB simulation &amp; field prediction</span>
+    </p>
+    <p class="lede" data-en="At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM, but a solver run is slow and only as good as the parameters it is given. I worked the other way round as well — feeding measured data back in, and learning the fields the solver would have produced."
+       data-ja="AT&amp;Sの半導体R&amp;Dでの取り組み。プリント基板はFEMでモデル化されますが、ソルバの実行は遅く、与えるパラメータの精度に結果が縛られます。そこで逆方向からも攻めました — 実測データを取り込み、ソルバが出すはずの場を学習させるアプローチです。">At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM, but a solver run is slow and only as good as the parameters it is given. I worked the other way round as well — feeding measured data back in, and learning the fields the solver would have produced.</p>
+
+    <figure class="figure">
+      <img src="images/pcb-fem.png" width="1400" height="928" loading="lazy"
+           alt="Illustration of a printed circuit board: copper traces fanning out from a central chip to pin headers and connectors.">
+      <figcaption>
+        <span data-en="The subject: a populated PCB — copper traces, vias and components, each with its own thermal and electrical behaviour."
+              data-ja="対象となるプリント基板。銅配線・ビア・部品がそれぞれ固有の熱的・電気的な振る舞いを持ちます。">The subject: a populated PCB — copper traces, vias and components, each with its own thermal and electrical behaviour.</span>
+        <span class="credit">Illustration: Pngtree (stock vector) — for illustration only, not actual project data.</span>
+      </figcaption>
+    </figure>
+
+    <div class="card-grid cols-3">
+      <article class="tile">
+        <h3 data-en="Measurements into the model" data-ja="実測データのモデルへの取り込み">Measurements into the model</h3>
+        <p data-en="Engineered the bench measurement data into features the FEM setup could actually consume — cleaning, aligning and deriving the quantities that pinned the simulation to the boards in front of us."
+           data-ja="実験で得た測定データを、FEM側が実際に使える形の特徴量へと加工。クレンジング・位置合わせと派生量の設計により、シミュレーションを目の前の実基板に紐づけました。">Engineered the bench measurement data into features the FEM setup could actually consume — cleaning, aligning and deriving the quantities that pinned the simulation to the boards in front of us.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Heat &amp; current distribution" data-ja="熱・電流の分布">Heat &amp; current distribution</h3>
+        <p data-en="Predicted where heat and current concentrate across the board, and the trajectories they follow through traces and vias — the hot spots and crowding that decide whether a layout survives."
+           data-ja="基板上のどこに熱と電流が集中するか、そして配線やビアを通ってどのような軌道を描くかを予測。レイアウトの成否を分けるホットスポットと電流集中を捉えます。">Predicted where heat and current concentrate across the board, and the trajectories they follow through traces and vias — the hot spots and crowding that decide whether a layout survives.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Learned surrogate" data-ja="学習型サロゲート">Learned surrogate</h3>
+        <p data-en="An electric potential trajectory model trained to stand in for the process simulation, returning a field estimate in a fraction of the time a full solve takes."
+           data-ja="プロセスシミュレーションの代替となる電位軌跡モデルを学習。フルソルブに比べてごく短時間で場の推定値を返します。">An electric potential trajectory model trained to stand in for the process simulation, returning a field estimate in a fraction of the time a full solve takes.</p>
       </article>
     </div>
   </section>
