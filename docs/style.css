@@ -549,6 +549,54 @@ a.tile-link:hover .tile-more {
     content: " ·";
 }
 
+/* ---------- Email chooser popover ---------- */
+
+.contact-pop {
+    position: fixed;
+    z-index: 60;
+    min-width: 232px;
+    padding: 8px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .45);
+}
+
+@media (prefers-color-scheme: light) {
+    .contact-pop {
+        box-shadow: 0 18px 44px rgba(20, 28, 40, .16);
+    }
+}
+
+.contact-pop-addr {
+    margin: 4px 10px 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    overflow-wrap: anywhere;
+}
+
+.contact-pop-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 10px;
+    font: inherit;
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.contact-pop-item:hover,
+.contact-pop-item:focus-visible {
+    background: var(--bg-elev-2);
+    color: var(--accent);
+    outline: none;
+}
+
 /* ---------- Inline SVG diagram ---------- */
 
 .diagram {
