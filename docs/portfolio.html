@@ -109,36 +109,36 @@
   <section class="section" id="fem">
     <p class="section-label">
       <span class="num">04</span>
-      <span class="title" data-en="PCB simulation &amp; field prediction" data-ja="PCBシミュレーションと場の予測">PCB simulation &amp; field prediction</span>
+      <span class="title" data-en="Prediction from PCB simulation" data-ja="PCBシミュレーションからの予測">Prediction from PCB simulation</span>
     </p>
-    <p class="lede" data-en="At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM, but a solver run is slow and only as good as the parameters it is given. I worked the other way round as well — feeding measured data back in, and learning the fields the solver would have produced."
-       data-ja="AT&amp;Sの半導体R&amp;Dでの取り組み。プリント基板はFEMでモデル化されますが、ソルバの実行は遅く、与えるパラメータの精度に結果が縛られます。そこで逆方向からも攻めました — 実測データを取り込み、ソルバが出すはずの場を学習させるアプローチです。">At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM, but a solver run is slow and only as good as the parameters it is given. I worked the other way round as well — feeding measured data back in, and learning the fields the solver would have produced.</p>
+    <p class="lede" data-en="At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM. From that simulation data I built prediction models — statistical and machine-learning alike — for current values and for how load is applied across the board."
+       data-ja="AT&amp;Sの半導体R&amp;Dでの取り組み。プリント基板はFEMでモデル化されます。そのシミュレーションデータをもとに、電流値と基板上での負荷のかかり方を予測するモデルを、統計的手法と機械学習の両面から構築しました。">At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM. From that simulation data I built prediction models — statistical and machine-learning alike — for current values and for how load is applied across the board.</p>
 
     <figure class="figure">
       <img src="images/pcb-fem.png" width="1400" height="928" loading="lazy"
            alt="Illustration of a printed circuit board: copper traces fanning out from a central chip to pin headers and connectors.">
       <figcaption>
-        <span data-en="The subject: a populated PCB — copper traces, vias and components, each with its own thermal and electrical behaviour."
-              data-ja="対象となるプリント基板。銅配線・ビア・部品がそれぞれ固有の熱的・電気的な振る舞いを持ちます。">The subject: a populated PCB — copper traces, vias and components, each with its own thermal and electrical behaviour.</span>
+        <span data-en="The subject: a populated PCB — copper traces, vias and components, each carrying its own share of the current and load."
+              data-ja="対象となるプリント基板。銅配線・ビア・部品がそれぞれ電流と負荷を分担して受け持ちます。">The subject: a populated PCB — copper traces, vias and components, each carrying its own share of the current and load.</span>
         <span class="credit">Illustration: Pngtree (stock vector) — for illustration only, not actual project data.</span>
       </figcaption>
     </figure>
 
     <div class="card-grid cols-3">
       <article class="tile">
-        <h3 data-en="Measurements into the model" data-ja="実測データのモデルへの取り込み">Measurements into the model</h3>
-        <p data-en="Engineered the bench measurement data into features the FEM setup could actually consume — cleaning, aligning and deriving the quantities that pinned the simulation to the boards in front of us."
-           data-ja="実験で得た測定データを、FEM側が実際に使える形の特徴量へと加工。クレンジング・位置合わせと派生量の設計により、シミュレーションを目の前の実基板に紐づけました。">Engineered the bench measurement data into features the FEM setup could actually consume — cleaning, aligning and deriving the quantities that pinned the simulation to the boards in front of us.</p>
+        <h3 data-en="Simulation output as training data" data-ja="シミュレーション出力を学習データに">Simulation output as training data</h3>
+        <p data-en="The FEM runs are the source. Their output becomes the dataset the prediction models are built on."
+           data-ja="FEMの解析結果そのものが出発点。その出力を、予測モデルを構築するためのデータセットとして扱いました。">The FEM runs are the source. Their output becomes the dataset the prediction models are built on.</p>
       </article>
       <article class="tile">
-        <h3 data-en="Heat &amp; current distribution" data-ja="熱・電流の分布">Heat &amp; current distribution</h3>
-        <p data-en="Predicted where heat and current concentrate across the board, and the trajectories they follow through traces and vias — the hot spots and crowding that decide whether a layout survives."
-           data-ja="基板上のどこに熱と電流が集中するか、そして配線やビアを通ってどのような軌道を描くかを予測。レイアウトの成否を分けるホットスポットと電流集中を捉えます。">Predicted where heat and current concentrate across the board, and the trajectories they follow through traces and vias — the hot spots and crowding that decide whether a layout survives.</p>
+        <h3 data-en="Current &amp; load prediction" data-ja="電流値と負荷の予測">Current &amp; load prediction</h3>
+        <p data-en="Predicting current values, and how load is applied across the board — the quantities that decide whether a layout holds up."
+           data-ja="電流値と、基板上で負荷がどのようにかかるかを予測。レイアウトが持ちこたえるかを左右する量です。">Predicting current values, and how load is applied across the board — the quantities that decide whether a layout holds up.</p>
       </article>
       <article class="tile">
-        <h3 data-en="Learned surrogate" data-ja="学習型サロゲート">Learned surrogate</h3>
-        <p data-en="An electric potential trajectory model trained to stand in for the process simulation, returning a field estimate in a fraction of the time a full solve takes."
-           data-ja="プロセスシミュレーションの代替となる電位軌跡モデルを学習。フルソルブに比べてごく短時間で場の推定値を返します。">An electric potential trajectory model trained to stand in for the process simulation, returning a field estimate in a fraction of the time a full solve takes.</p>
+        <h3 data-en="Statistical and AI models alike" data-ja="統計モデルとAIモデルの両輪">Statistical and AI models alike</h3>
+        <p data-en="Built both for the same targets — classical statistical modelling next to machine learning, rather than betting on one approach."
+           data-ja="同じ予測対象に対し、古典的な統計モデリングと機械学習の双方を構築。どちらか一方に賭けない進め方をとりました。">Built both for the same targets — classical statistical modelling next to machine learning, rather than betting on one approach.</p>
       </article>
     </div>
   </section>
