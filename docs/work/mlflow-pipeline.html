@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Building and operating an ML pipeline on MLflow for a semiconductor R&D team at AT&S — what MLflow is, what it does, and how it was run day to day.">
+<title>An ML pipeline on MLflow — Koki Ueno</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../about-me.html"><span data-en="Koki&nbsp;Ueno" data-ja="上野航希">Koki&nbsp;Ueno</span></a>
+    <ul class="nav-links">
+      <li><a href="../about-me.html" data-en="About" data-ja="紹介">About</a></li>
+      <li><a href="../portfolio.html" aria-current="page" data-en="Work" data-ja="仕事">Work</a></li>
+      <li><a href="../publications.html" data-en="Research" data-ja="研究">Research</a></li>
+      <li><a href="../resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+    </ul>
+    <button id="language-toggle" onclick="toggleLanguage()">日本語</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <a class="back-link" href="../portfolio.html" data-en="← Work" data-ja="← 仕事一覧">← Work</a>
+
+  <h1 class="page-title" style="margin-top:10px" data-en="An ML pipeline on MLflow" data-ja="MLflowによるMLパイプライン">An ML pipeline on MLflow</h1>
+
+  <ul class="case-meta">
+    <li>AT&amp;S Austria Technologie &amp; Systemtechnik AG</li>
+    <li data-en="Leoben, Austria" data-ja="オーストリア・レオーベン">Leoben, Austria</li>
+    <li>2023 – 2024</li>
+    <li data-en="Data Science Intern, Semiconductor R&amp;D" data-ja="データサイエンスインターン / 半導体R&amp;D">Data Science Intern, Semiconductor R&amp;D</li>
+  </ul>
+
+  <p class="lede" data-en="A research team runs a lot of experiments and remembers almost none of them. I built and operated the semiconductor R&amp;D team's ML pipeline on MLflow so that every run left a record behind it — and kept it running as everyday infrastructure, not a one-off setup."
+     data-ja="研究チームは大量の実験を回しますが、その大半は記録に残りません。半導体R&amp;DチームのMLパイプラインをMLflowで構築・運用し、すべての実行が記録を残すようにしました。一度作って終わりではなく、日常的に回る基盤として維持し続けた点が要点です。">A research team runs a lot of experiments and remembers almost none of them. I built and operated the semiconductor R&amp;D team's ML pipeline on MLflow so that every run left a record behind it — and kept it running as everyday infrastructure, not a one-off setup.</p>
+
+  <!-- ================= WHAT MLFLOW IS ================= -->
+  <section class="section" id="what">
+    <p class="section-label">
+      <span class="num">01</span>
+      <span class="title" data-en="What MLflow is" data-ja="MLflowとは">What MLflow is</span>
+    </p>
+
+    <p data-en="MLflow is an open-source platform for managing the machine learning lifecycle. It started at Databricks and is now developed under the Linux Foundation, released under the Apache 2.0 licence. It is deliberately unopinionated: it does not care which framework you train in, where you run it, or how you deploy — it gives you a common way to record what happened and to hand a model to whoever needs it next."
+       data-ja="MLflowは、機械学習のライフサイクルを管理するオープンソースのプラットフォームです。Databricks発で、現在はLinux Foundation傘下、Apache 2.0ライセンスで公開されています。特定のやり方を強制しない設計が特徴で、学習フレームワーク・実行環境・デプロイ方法を問いません。「何が起きたかを記録する共通の方法」と「モデルを次の担当者へ渡す共通の方法」を提供するものです。">MLflow is an open-source platform for managing the machine learning lifecycle. It started at Databricks and is now developed under the Linux Foundation, released under the Apache 2.0 licence. It is deliberately unopinionated: it does not care which framework you train in, where you run it, or how you deploy — it gives you a common way to record what happened and to hand a model to whoever needs it next.</p>
+
+    <p data-en="The problem it solves is mundane and universal. Someone trains a model that works, then changes six things and trains another. Two weeks later nobody can say which combination produced the good number, the notebook has moved on, and the weights are in a folder called final_v3_actually. MLflow makes the record a side effect of running the code rather than something you have to remember to write down."
+       data-ja="解決する課題は地味ですが、どこにでもあります。うまくいったモデルを作り、6箇所いじって次を回す。2週間後には、どの組み合わせが良い数字を出したのか誰も言えず、ノートブックは先へ進み、重みは final_v3_actually というフォルダに入っている。MLflowは、この記録を「意識して書き残すもの」ではなく「コードを実行すれば自動的に残るもの」に変えます。">The problem it solves is mundane and universal. Someone trains a model that works, then changes six things and trains another. Two weeks later nobody can say which combination produced the good number, the notebook has moved on, and the weights are in a folder called final_v3_actually. MLflow makes the record a side effect of running the code rather than something you have to remember to write down.</p>
+
+    <figure class="figure">
+      <div class="diagram">
+        <svg viewBox="0 0 900 350" role="img" aria-labelledby="dg-title dg-desc">
+          <title id="dg-title">The MLflow loop</title>
+          <desc id="dg-desc">Training runs log parameters, metrics and artifacts to the MLflow tracking server. The best run is registered in the model registry as a version, which is then promoted to deployment. Tracking also feeds back into the runs for comparison and reproduction.</desc>
+
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" class="d-arrow"/>
+            </marker>
+          </defs>
+
+          <!-- boxes -->
+          <rect class="d-box" x="20"  y="100" width="175" height="100" rx="10"/>
+          <text class="d-title" x="107" y="134" text-anchor="middle">Training runs</text>
+          <text class="d-sub"   x="107" y="157" text-anchor="middle">code · data · params</text>
+          <text class="d-sub"   x="107" y="175" text-anchor="middle">any framework</text>
+
+          <rect class="d-box d-box-accent" x="249" y="100" width="175" height="100" rx="10"/>
+          <text class="d-title" x="336" y="134" text-anchor="middle">Tracking</text>
+          <text class="d-sub"   x="336" y="157" text-anchor="middle">metrics · artifacts</text>
+          <text class="d-sub"   x="336" y="175" text-anchor="middle">searchable UI</text>
+
+          <rect class="d-box" x="478" y="100" width="175" height="100" rx="10"/>
+          <text class="d-title" x="565" y="134" text-anchor="middle">Model Registry</text>
+          <text class="d-sub"   x="565" y="157" text-anchor="middle">v1 · v2 · v3 …</text>
+          <text class="d-sub"   x="565" y="175" text-anchor="middle">stages · lineage</text>
+
+          <rect class="d-box" x="707" y="100" width="175" height="100" rx="10"/>
+          <text class="d-title" x="794" y="134" text-anchor="middle">Deployment</text>
+          <text class="d-sub"   x="794" y="157" text-anchor="middle">REST · batch</text>
+          <text class="d-sub"   x="794" y="175" text-anchor="middle">same artifact</text>
+
+          <!-- forward edges -->
+          <line class="d-edge" x1="195" y1="150" x2="243" y2="150" marker-end="url(#ah)"/>
+          <text class="d-edge-label" x="219" y="138" text-anchor="middle">log</text>
+
+          <line class="d-edge" x1="424" y1="150" x2="472" y2="150" marker-end="url(#ah)"/>
+          <text class="d-edge-label" x="448" y="138" text-anchor="middle">register</text>
+
+          <line class="d-edge" x1="653" y1="150" x2="701" y2="150" marker-end="url(#ah)"/>
+          <text class="d-edge-label" x="677" y="138" text-anchor="middle">promote</text>
+
+          <!-- feedback edge: tracking back into the next run -->
+          <path class="d-edge" d="M 336 200 L 336 265 Q 336 285 316 285 L 127 285 Q 107 285 107 265 L 107 206" marker-end="url(#ah)"/>
+          <text class="d-edge-label" x="221" y="303" text-anchor="middle">compare runs · reproduce the good one</text>
+
+          <!-- top caption -->
+          <text class="d-sub" x="450" y="52" text-anchor="middle">every step keeps a link back to the run that produced it</text>
+        </svg>
+      </div>
+      <figcaption>
+        <span data-en="The loop MLflow closes: a run logs itself, the best one is registered as a versioned model, and what gets deployed is traceable back to the exact run behind it."
+              data-ja="MLflowが閉じるループ。実行そのものが記録を残し、良かったものがバージョン付きモデルとして登録され、デプロイされたものは元の実行まで遡れます。">The loop MLflow closes: a run logs itself, the best one is registered as a versioned model, and what gets deployed is traceable back to the exact run behind it.</span>
+        <span class="credit">Diagram drawn for this page — no third-party assets.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= WHAT IT DOES ================= -->
+  <section class="section" id="capabilities">
+    <p class="section-label">
+      <span class="num">02</span>
+      <span class="title" data-en="What it gives you" data-ja="できること">What it gives you</span>
+    </p>
+
+    <div class="card-grid cols-3">
+      <article class="tile">
+        <h3 data-en="Experiment tracking" data-ja="実験管理（Tracking）">Experiment tracking</h3>
+        <p data-en="Every run records its parameters, its metrics over time, and its output artifacts — plots, weights, confusion matrices, whatever you attach. Runs group into experiments, and the UI sorts and filters across them, so “which settings gave the best score” is a query rather than an archaeology project."
+           data-ja="実行ごとにパラメータ、経時的なメトリクス、出力成果物（図・重み・混同行列など添付したもの全て）を記録します。実行は実験単位でまとめられ、UI上で横断的に並べ替え・絞り込みができるため、「どの設定が一番良かったか」が発掘作業ではなく検索で済みます。">Every run records its parameters, its metrics over time, and its output artifacts — plots, weights, confusion matrices, whatever you attach. Runs group into experiments, and the UI sorts and filters across them, so “which settings gave the best score” is a query rather than an archaeology project.</p>
+      </article>
+
+      <article class="tile">
+        <h3 data-en="Autologging" data-ja="自動ロギング">Autologging</h3>
+        <p data-en="One call and MLflow hooks into the training library itself — scikit-learn, PyTorch, TensorFlow, XGBoost and others — capturing parameters, metrics and the model without the researcher instrumenting anything by hand. This is the difference between a tool people adopt and one they route around."
+           data-ja="1行呼ぶだけで、MLflowが学習ライブラリ側（scikit-learn、PyTorch、TensorFlow、XGBoostなど）に入り込み、パラメータ・メトリクス・モデルを自動で記録します。研究者が手作業で計装する必要がありません。ツールが定着するか迂回されるかは、ここで決まります。">One call and MLflow hooks into the training library itself — scikit-learn, PyTorch, TensorFlow, XGBoost and others — capturing parameters, metrics and the model without the researcher instrumenting anything by hand. This is the difference between a tool people adopt and one they route around.</p>
+      </article>
+
+      <article class="tile">
+        <h3 data-en="A standard model format" data-ja="標準化されたモデル形式">A standard model format</h3>
+        <p data-en="MLflow saves models in “flavors” — a common envelope around a framework-specific model, plus the environment needed to load it. A scikit-learn model and a PyTorch model come back through the same interface, so downstream code does not have to care which one it got."
+           data-ja="MLflowはモデルを「flavor」という形式で保存します。フレームワーク固有のモデルを共通の外皮で包み、読み込みに必要な環境情報を添えたものです。scikit-learnのモデルもPyTorchのモデルも同じインターフェースで復元できるため、後段のコードは中身を意識せずに済みます。">MLflow saves models in “flavors” — a common envelope around a framework-specific model, plus the environment needed to load it. A scikit-learn model and a PyTorch model come back through the same interface, so downstream code does not have to care which one it got.</p>
+      </article>
+
+      <article class="tile">
+        <h3 data-en="Model Registry" data-ja="モデルレジストリ">Model Registry</h3>
+        <p data-en="A named model with numbered versions, each carrying a link back to the run that produced it. Versions move through stages, annotations and approvals ride along, and the question “what exactly is in production right now” has one answer instead of several."
+           data-ja="名前を付けたモデルに版番号が付き、各版はそれを生んだ実行へのリンクを保持します。版はステージ間を移動し、注釈や承認も一緒に運ばれます。「今まさに本番に入っているのは何か」への答えが1つに定まります。">A named model with numbered versions, each carrying a link back to the run that produced it. Versions move through stages, annotations and approvals ride along, and the question “what exactly is in production right now” has one answer instead of several.</p>
+      </article>
+
+      <article class="tile">
+        <h3 data-en="Reproducible runs" data-ja="再現可能な実行">Reproducible runs</h3>
+        <p data-en="MLflow Projects package code together with its environment specification and entry points, so a run can be repeated on another machine months later and land in the same place. Reproducibility stops depending on whether the person who ran it is still on the team."
+           data-ja="MLflow Projectsは、コードを環境定義とエントリポイントごとまとめます。数ヶ月後に別のマシンで同じ実行を再現しても同じ結果に着地します。再現性が「実行した本人がまだチームにいるかどうか」に依存しなくなります。">MLflow Projects package code together with its environment specification and entry points, so a run can be repeated on another machine months later and land in the same place. Reproducibility stops depending on whether the person who ran it is still on the team.</p>
+      </article>
+
+      <article class="tile">
+        <h3 data-en="Serving &amp; evaluation" data-ja="サービングと評価">Serving &amp; evaluation</h3>
+        <p data-en="A registered model can be served behind a REST endpoint or scored in batch straight from the registry, and MLflow's evaluation tooling scores candidates on a shared dataset so comparisons are made on the same footing. Recent versions extend the same tracing idea to LLM and GenAI workloads."
+           data-ja="登録済みモデルはレジストリから直接RESTエンドポイントとして提供したり、バッチ推論に回したりできます。評価機能により、候補モデルを同一データセット上で同じ土俵で比較できます。近年のバージョンでは、同じトレーシングの考え方がLLM／生成AIのワークロードにも拡張されています。">A registered model can be served behind a REST endpoint or scored in batch straight from the registry, and MLflow's evaluation tooling scores candidates on a shared dataset so comparisons are made on the same footing. Recent versions extend the same tracing idea to LLM and GenAI workloads.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= WHAT I DID ================= -->
+  <section class="section" id="mine">
+    <p class="section-label">
+      <span class="num">03</span>
+      <span class="title" data-en="What I built and ran" data-ja="担当した範囲">What I built and ran</span>
+    </p>
+
+    <div class="card-grid cols-3">
+      <article class="tile">
+        <h3 data-en="Stood the pipeline up" data-ja="パイプラインの構築">Stood the pipeline up</h3>
+        <p data-en="Built the semiconductor R&amp;D team's ML pipeline on MLflow — tracking wired into the training code, models versioned in the registry, runs reproducible from the recorded environment."
+           data-ja="半導体R&amp;DチームのMLパイプラインをMLflow上に構築。学習コードにトラッキングを組み込み、モデルをレジストリでバージョン管理し、記録された環境から実行を再現できる状態にしました。">Built the semiconductor R&amp;D team's ML pipeline on MLflow — tracking wired into the training code, models versioned in the registry, runs reproducible from the recorded environment.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Operated it, not just installed it" data-ja="構築だけでなく運用まで">Operated it, not just installed it</h3>
+        <p data-en="Ran it as day-to-day infrastructure for the team rather than handing over a setup and walking away — the part that decides whether an MLOps effort survives contact with a deadline."
+           data-ja="環境を渡して終わりにせず、チームの日常業務を支える基盤として運用し続けました。MLOpsの取り組みが納期の前で生き残れるかは、ここで決まります。">Ran it as day-to-day infrastructure for the team rather than handing over a setup and walking away — the part that decides whether an MLOps effort survives contact with a deadline.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Applied to the R&amp;D work" data-ja="R&amp;D業務への適用">Applied to the R&amp;D work</h3>
+        <p data-en="The same pipeline carried the team's modelling work — anomaly detection on manufacturing data, and the prediction models built on PCB simulation output."
+           data-ja="このパイプライン上で、チームのモデリング業務が回りました。製造データの異常検知と、PCBシミュレーション出力をもとにした予測モデルの構築です。">The same pipeline carried the team's modelling work — anomaly detection on manufacturing data, and the prediction models built on PCB simulation output.</p>
+      </article>
+    </div>
+
+    <p style="margin-top:clamp(18px,3vw,26px)">
+      <a href="pcb-simulation.html" data-en="Related case study: Prediction from PCB simulation →" data-ja="関連ケーススタディ: PCBシミュレーションからの予測 →">Related case study: Prediction from PCB simulation →</a>
+    </p>
+  </section>
+
+  <a class="back-link" href="../portfolio.html" data-en="← Back to all work" data-ja="← 仕事一覧に戻る">← Back to all work</a>
+
+</main>
+
+<footer class="footer wrap">
+  <span data-en="© 2026 Koki Ueno" data-ja="© 2026 上野航希">© 2026 Koki Ueno</span>
+  <ul class="footer-links">
+    <li><a href="mailto:uenokouki.soccer@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="../resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+  </ul>
+</footer>
+
+<script src="../language-switcher.js"></script>
+</body>
+</html>

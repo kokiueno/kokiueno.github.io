@@ -549,6 +549,57 @@ a.tile-link:hover .tile-more {
     content: " ·";
 }
 
+/* ---------- Inline SVG diagram ---------- */
+
+.diagram {
+    /* wide diagrams scroll inside their own box, never the page */
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+.diagram svg {
+    display: block;
+    width: 100%;
+    min-width: 660px;
+    height: auto;
+}
+
+.diagram .d-box {
+    fill: var(--bg-elev-2);
+    stroke: var(--line-strong);
+    stroke-width: 1;
+}
+
+.diagram .d-box-accent {
+    stroke: var(--accent);
+}
+
+.diagram .d-title {
+    fill: var(--text);
+    font: 600 15px var(--font-sans);
+}
+
+.diagram .d-sub {
+    fill: var(--text-dim);
+    font: 400 11.5px var(--font-mono);
+}
+
+.diagram .d-edge {
+    stroke: var(--text-faint);
+    stroke-width: 1.4;
+    fill: none;
+}
+
+.diagram .d-edge-label {
+    fill: var(--accent);
+    font: 400 11px var(--font-mono);
+    letter-spacing: .04em;
+}
+
+.diagram .d-arrow {
+    fill: var(--text-faint);
+}
+
 /* ---------- Figure ---------- */
 
 .figure {
