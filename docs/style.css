@@ -478,6 +478,77 @@ a:hover {
     color: var(--accent);
 }
 
+/* ---------- Clickable case-study tile ---------- */
+
+a.tile-link {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+}
+
+a.tile-link:hover {
+    text-decoration: none;
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+    transform: translateY(-2px);
+}
+
+a.tile-link {
+    transition: border-color .2s, transform .2s;
+}
+
+a.tile-link p {
+    flex: 1 1 auto;
+}
+
+.tile-more {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+a.tile-link:hover .tile-more {
+    text-decoration: underline;
+}
+
+/* ---------- Case-study page chrome ---------- */
+
+.back-link {
+    display: inline-block;
+    margin-top: clamp(28px, 5vw, 52px);
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.back-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    list-style: none;
+    margin: 0 0 clamp(20px, 3vw, 30px);
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.3vw, 12.5px);
+    letter-spacing: .04em;
+    color: var(--text-faint);
+}
+
+.case-meta li:not(:last-child)::after {
+    content: " ·";
+}
+
 /* ---------- Figure ---------- */
 
 .figure {

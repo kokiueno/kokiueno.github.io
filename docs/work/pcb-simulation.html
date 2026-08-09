@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prediction models for current and load, built on FEM simulation data of printed circuit boards — semiconductor R&D at AT&S.">
+<title>Prediction from PCB simulation — Koki Ueno</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../about-me.html">Koki&nbsp;Ueno</a>
+    <ul class="nav-links">
+      <li><a href="../about-me.html" data-en="About" data-ja="紹介">About</a></li>
+      <li><a href="../portfolio.html" aria-current="page" data-en="Work" data-ja="仕事">Work</a></li>
+      <li><a href="../publications.html" data-en="Research" data-ja="研究">Research</a></li>
+      <li><a href="../resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+    </ul>
+    <button id="language-toggle" onclick="toggleLanguage()">日本語</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <a class="back-link" href="../portfolio.html" data-en="← Work" data-ja="← 仕事一覧">← Work</a>
+
+  <h1 class="page-title" style="margin-top:10px" data-en="Prediction from PCB simulation" data-ja="PCBシミュレーションからの予測">Prediction from PCB simulation</h1>
+
+  <ul class="case-meta">
+    <li>AT&amp;S Austria Technologie &amp; Systemtechnik AG</li>
+    <li data-en="Leoben, Austria" data-ja="オーストリア・レオーベン">Leoben, Austria</li>
+    <li>2023 – 2024</li>
+    <li data-en="Data Science Intern, Semiconductor R&amp;D" data-ja="データサイエンスインターン / 半導体R&amp;D">Data Science Intern, Semiconductor R&amp;D</li>
+  </ul>
+
+  <p class="lede" data-en="Printed circuit boards are modelled in FEM. From that simulation data I built prediction models — statistical and machine-learning alike — for current values and for how load is applied across the board."
+     data-ja="プリント基板はFEMでモデル化されます。そのシミュレーションデータをもとに、電流値と基板上での負荷のかかり方を予測するモデルを、統計的手法と機械学習の両面から構築しました。">Printed circuit boards are modelled in FEM. From that simulation data I built prediction models — statistical and machine-learning alike — for current values and for how load is applied across the board.</p>
+
+  <figure class="figure">
+    <img src="../images/pcb-fem.png" width="1400" height="928"
+         alt="Illustration of a printed circuit board: copper traces fanning out from a central chip to pin headers and connectors.">
+    <figcaption>
+      <span data-en="The subject: a populated PCB — copper traces, vias and components, each carrying its own share of the current and load."
+            data-ja="対象となるプリント基板。銅配線・ビア・部品がそれぞれ電流と負荷を分担して受け持ちます。">The subject: a populated PCB — copper traces, vias and components, each carrying its own share of the current and load.</span>
+      <span class="credit">Illustration: Pngtree (stock vector) — for illustration only, not actual project data.</span>
+    </figcaption>
+  </figure>
+
+  <section class="section" id="approach">
+    <p class="section-label">
+      <span class="num">01</span>
+      <span class="title" data-en="Approach" data-ja="アプローチ">Approach</span>
+    </p>
+
+    <div class="card-grid cols-3">
+      <article class="tile">
+        <h3 data-en="Simulation output as training data" data-ja="シミュレーション出力を学習データに">Simulation output as training data</h3>
+        <p data-en="The FEM runs are the source. Their output becomes the dataset the prediction models are built on."
+           data-ja="FEMの解析結果そのものが出発点。その出力を、予測モデルを構築するためのデータセットとして扱いました。">The FEM runs are the source. Their output becomes the dataset the prediction models are built on.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Current &amp; load prediction" data-ja="電流値と負荷の予測">Current &amp; load prediction</h3>
+        <p data-en="Predicting current values, and how load is applied across the board — the quantities that decide whether a layout holds up."
+           data-ja="電流値と、基板上で負荷がどのようにかかるかを予測。レイアウトが持ちこたえるかを左右する量です。">Predicting current values, and how load is applied across the board — the quantities that decide whether a layout holds up.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="Statistical and AI models alike" data-ja="統計モデルとAIモデルの両輪">Statistical and AI models alike</h3>
+        <p data-en="Built both for the same targets — classical statistical modelling next to machine learning, rather than betting on one approach."
+           data-ja="同じ予測対象に対し、古典的な統計モデリングと機械学習の双方を構築。どちらか一方に賭けない進め方をとりました。">Built both for the same targets — classical statistical modelling next to machine learning, rather than betting on one approach.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="context">
+    <p class="section-label">
+      <span class="num">02</span>
+      <span class="title" data-en="Also at AT&amp;S" data-ja="AT&amp;Sでの他の担当">Also at AT&amp;S</span>
+    </p>
+
+    <div class="card-grid cols-2">
+      <article class="tile">
+        <h3 data-en="Anomaly detection on production data" data-ja="製造データの異常検知">Anomaly detection on production data</h3>
+        <p data-en="Anomaly detection models over semiconductor manufacturing data, in Python and SQL."
+           data-ja="半導体製造データを対象とした異常検知モデルを、PythonとSQLで構築。">Anomaly detection models over semiconductor manufacturing data, in Python and SQL.</p>
+      </article>
+      <article class="tile">
+        <h3 data-en="MLOps for the R&amp;D team" data-ja="R&amp;DチームのMLOps">MLOps for the R&amp;D team</h3>
+        <p data-en="Experiment tracking, model versioning and reproducible training pipelines, so results held up beyond a single laptop."
+           data-ja="実験管理・モデルバージョニング・再現可能な学習パイプラインを整備し、個人の手元に閉じない結果を残せるようにしました。">Experiment tracking, model versioning and reproducible training pipelines, so results held up beyond a single laptop.</p>
+      </article>
+    </div>
+  </section>
+
+  <a class="back-link" href="../portfolio.html" data-en="← Back to all work" data-ja="← 仕事一覧に戻る">← Back to all work</a>
+
+</main>
+
+<footer class="footer wrap">
+  <span>© 2026 Koki Ueno</span>
+  <ul class="footer-links">
+    <li><a href="mailto:uenokouki.soccer@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/koki-ueno-142b47281" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="../resume.html" data-en="Résumé" data-ja="経歴書">Résumé</a></li>
+  </ul>
+</footer>
+
+<script src="../language-switcher.js"></script>
+</body>
+</html>

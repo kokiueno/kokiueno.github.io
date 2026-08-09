@@ -25,9 +25,9 @@
 <main class="wrap">
 
   <p class="eyebrow" style="margin-top:clamp(36px,6vw,64px);margin-bottom:0" data-en="Work" data-ja="仕事">Work</p>
-  <h1 class="page-title" style="margin-top:8px" data-en="What I build" data-ja="つくっているもの">What I build</h1>
-  <p class="lede" data-en="Four lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code."
-     data-ja="大きく4つの領域。多くは社内・顧客案件のため詳細は公開できないので、扱っている問題の輪郭を書いています。">Four lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code.</p>
+  <h1 class="page-title" style="margin-top:8px" data-en="What I've built" data-ja="つくってきたもの">What I've built</h1>
+  <p class="lede" data-en="Four lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code. Cards marked “Case study” open a fuller write-up."
+     data-ja="大きく4つの領域。多くは社内・顧客案件のため詳細は公開できないので、扱っている問題の輪郭を書いています。「Case study」と付いたカードは詳細ページに移動します。">Four lines of work. Much of it sits behind a corporate NDA, so what follows is the shape of the problem rather than the code. Cards marked “Case study” open a fuller write-up.</p>
 
   <section class="section" id="vla">
     <p class="section-label">
@@ -106,40 +106,18 @@
     </div>
   </section>
 
-  <section class="section" id="fem">
+  <section class="section" id="simulation">
     <p class="section-label">
       <span class="num">04</span>
-      <span class="title" data-en="Prediction from PCB simulation" data-ja="PCBシミュレーションからの予測">Prediction from PCB simulation</span>
+      <span class="title" data-en="Simulation" data-ja="シミュレーション">Simulation</span>
     </p>
-    <p class="lede" data-en="At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM. From that simulation data I built prediction models — statistical and machine-learning alike — for current values and for how load is applied across the board."
-       data-ja="AT&amp;Sの半導体R&amp;Dでの取り組み。プリント基板はFEMでモデル化されます。そのシミュレーションデータをもとに、電流値と基板上での負荷のかかり方を予測するモデルを、統計的手法と機械学習の両面から構築しました。">At AT&amp;S, semiconductor R&amp;D. Printed circuit boards are modelled in FEM. From that simulation data I built prediction models — statistical and machine-learning alike — for current values and for how load is applied across the board.</p>
-
-    <figure class="figure">
-      <img src="images/pcb-fem.png" width="1400" height="928" loading="lazy"
-           alt="Illustration of a printed circuit board: copper traces fanning out from a central chip to pin headers and connectors.">
-      <figcaption>
-        <span data-en="The subject: a populated PCB — copper traces, vias and components, each carrying its own share of the current and load."
-              data-ja="対象となるプリント基板。銅配線・ビア・部品がそれぞれ電流と負荷を分担して受け持ちます。">The subject: a populated PCB — copper traces, vias and components, each carrying its own share of the current and load.</span>
-        <span class="credit">Illustration: Pngtree (stock vector) — for illustration only, not actual project data.</span>
-      </figcaption>
-    </figure>
-
-    <div class="card-grid cols-3">
-      <article class="tile">
-        <h3 data-en="Simulation output as training data" data-ja="シミュレーション出力を学習データに">Simulation output as training data</h3>
-        <p data-en="The FEM runs are the source. Their output becomes the dataset the prediction models are built on."
-           data-ja="FEMの解析結果そのものが出発点。その出力を、予測モデルを構築するためのデータセットとして扱いました。">The FEM runs are the source. Their output becomes the dataset the prediction models are built on.</p>
-      </article>
-      <article class="tile">
-        <h3 data-en="Current &amp; load prediction" data-ja="電流値と負荷の予測">Current &amp; load prediction</h3>
-        <p data-en="Predicting current values, and how load is applied across the board — the quantities that decide whether a layout holds up."
-           data-ja="電流値と、基板上で負荷がどのようにかかるかを予測。レイアウトが持ちこたえるかを左右する量です。">Predicting current values, and how load is applied across the board — the quantities that decide whether a layout holds up.</p>
-      </article>
-      <article class="tile">
-        <h3 data-en="Statistical and AI models alike" data-ja="統計モデルとAIモデルの両輪">Statistical and AI models alike</h3>
-        <p data-en="Built both for the same targets — classical statistical modelling next to machine learning, rather than betting on one approach."
-           data-ja="同じ予測対象に対し、古典的な統計モデリングと機械学習の双方を構築。どちらか一方に賭けない進め方をとりました。">Built both for the same targets — classical statistical modelling next to machine learning, rather than betting on one approach.</p>
-      </article>
+    <div class="card-grid cols-2">
+      <a class="tile tile-link" href="work/pcb-simulation.html">
+        <h3 data-en="Prediction from PCB simulation" data-ja="PCBシミュレーションからの予測">Prediction from PCB simulation</h3>
+        <p data-en="At AT&amp;S: printed circuit boards are modelled in FEM — building statistical and machine-learning models on that simulation data to predict current values and how load is applied."
+           data-ja="AT&amp;Sにて。FEMでモデル化されたプリント基板のシミュレーションデータから、電流値と負荷のかかり方を予測する統計モデル・機械学習モデルを構築。">At AT&amp;S: printed circuit boards are modelled in FEM — building statistical and machine-learning models on that simulation data to predict current values and how load is applied.</p>
+        <span class="tile-more" data-en="Case study →" data-ja="詳細を見る →">Case study →</span>
+      </a>
     </div>
   </section>
 
